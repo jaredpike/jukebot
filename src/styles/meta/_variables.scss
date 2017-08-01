@@ -1,0 +1,60 @@
+// font defaults
+$font-size-base: 10px;
+$font-size: 1.6rem;
+$line-height: 1.5;
+
+// font families
+$overpass: 'Overpass', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+// easing curves
+$ease-in-out-quart: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-out-quint: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+// colors
+$colors: (
+  black: #000,
+  firefly: #071a2f,
+  biscay: #15365c,
+  royal: #3588e6,
+  white: #ffffff
+);
+
+// weights
+$font-weights: (
+  thin: 100,
+  extra-light: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  black: 900
+);
+
+// breakpoints
+$grid-breakpoints: (
+  initial: 0px,
+  mobile: 600px,
+  tablet: 900px,
+  desktop: 1200px,
+  hd: 1800px
+);
+
+// z-index layers
+$layers: (
+  background,
+  content,
+  dropdown,
+  subnav,
+  mobile-nav,
+  header,
+  overlay,
+  modal,
+  modal-background,
+  modal-content
+);
+
+// custom variables
+$header-height: 6.4rem;
+$border-radius: 6px;

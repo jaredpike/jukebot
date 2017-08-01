@@ -1,0 +1,13 @@
+%container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 120rem;
+
+  @include below(initial) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

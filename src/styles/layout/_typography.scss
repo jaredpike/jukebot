@@ -1,0 +1,70 @@
+$default-font-color: -color(white);
+
+%heading {
+  font-family: $overpass;
+  font-weight: -weight(regular);
+  line-height: 1.3;
+}
+
+%copy {
+  font-family: $overpass;
+  font-weight: -weight(regular);
+  line-height: 1.6;
+}
+
+@mixin hd-a($color: $default-font-color) {
+  @extend %heading;
+
+  color: $color;
+  font-size: 3rem;
+
+  @include above(mobile) {
+    font-size: 4.4rem;
+  }
+}
+
+@mixin hd-b($color: $default-font-color) {
+  @extend %heading;
+
+  color: $color;
+  font-size: 2.4rem;
+}
+
+@mixin copy-a($color: $default-font-color) {
+  @extend %copy;
+
+  color: $color;
+  font-size: 2.4rem;
+}
+
+@mixin copy-b($color: $default-font-color) {
+  @extend %copy;
+
+  color: $color;
+  font-size: 1.6rem;
+}
+
+@mixin copy-c($color: $default-font-color) {
+  @extend %copy;
+
+  color: $color;
+  font-size: 1.8rem;
+}
+
+@mixin small-caps($color: $default-font-color) {
+  @extend %copy;
+
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: $color;
+  font-weight: -weight(bold);
+  letter-spacing: 0.1em;
+}
+
+@mixin hd-search() {
+  @extend %copy;
+
+  color: -color(firefly);
+  line-height: 1;
+  font-size: 2.4rem;
+}
