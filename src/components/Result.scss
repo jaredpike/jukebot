@@ -1,0 +1,71 @@
+@import '../styles/meta';
+
+.results {
+  padding-top: 3.6rem;
+  padding-bottom: 3.6rem;
+}
+
+.result {
+  &__link {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    padding: 2.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius;
+
+    &:hover {
+      @extend %big-shadow;
+
+      background-color: white;
+
+      .result__title,
+      .result__channel,
+      .result__length {
+        color: -color(firefly);
+      }
+    }
+  }
+
+  &__image {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 3.6rem;
+    margin-right: 2.4rem;
+    background-color: -color(firefly);
+    background-size: cover;
+    background-position: center center;
+
+    @include below(mobile) {
+      display: none;
+    }
+  }
+
+  &__contents {
+    flex: 1;
+  }
+
+  &__title {
+    @include hd-b();
+  }
+
+  &__channel {
+    @include copy-b();
+
+    opacity: 0.5;
+  }
+
+  &__length {
+    @include hd-b();
+
+    margin-left: 1rem;
+    text-align: right;
+  }
+
+  &__link,
+  &__title,
+  &__channel,
+  &__length {
+    transition: all 0.5s $ease-out-quint;
+  }
+}

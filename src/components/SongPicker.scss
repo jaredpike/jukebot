@@ -1,0 +1,29 @@
+@import '../styles/meta';
+
+.search {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    top: 2rem;
+    left: 2.3rem;
+    fill: -color(biscay);
+  }
+
+  &__input {
+    input {
+      @extend %strip-input-style;
+      @extend %big-shadow;
+      @include hd-search();
+
+      width: 100%;
+      height: 6.4rem;
+      padding-left: 6.4rem;
+      line-height: 1.4;
+      background-color: -color(white);
+      border-radius: 3.2rem;
+    }
+  }
+}
