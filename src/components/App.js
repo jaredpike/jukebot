@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.scss';
 import Header from './Header';
 import SongPicker from './SongPicker';
+import Inventory from './Inventory';
 
 class App extends Component {
     constructor() {
@@ -25,9 +26,12 @@ class App extends Component {
 
     render() {
         return (
-            <div className="main">
+            <div className="fill-height">
                 <Header name="Playlist"/>
-                <SongPicker addToPlaylist={this.addToPlaylist} />
+                <div className="main">
+                    <SongPicker addToPlaylist={this.addToPlaylist} />
+                    <Inventory />
+                </div>
             </div>
         );
     }

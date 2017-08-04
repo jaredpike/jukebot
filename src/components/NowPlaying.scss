@@ -1,0 +1,45 @@
+@import '../styles/meta';
+
+.now-playing {
+  @extend %fill-background;
+
+  height: 0;
+  padding-top: 56.25%;
+  position: relative;
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -z(content);
+  }
+
+  &:before {
+    @extend %overlay;
+
+    background-image: linear-gradient(to bottom right, #760E85 0%, #7D2B0A 100%);
+    opacity: 0.8;
+    z-index: -z(background);
+  }
+
+  &__heading {
+    text-align: center;
+
+    span {
+      display: block;
+
+      &:nth-child(1) {
+        @include small-caps();
+      }
+
+      &:nth-child(2) {
+        @include hd-a();
+      }
+    }
+  }
+}
