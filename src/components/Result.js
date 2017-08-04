@@ -5,7 +5,7 @@ class Result extends Component {
     render() {
         return (
             <li className="result">
-                <button className="result__link">
+                <button className="result__link" onClick={() => this.props.addToPlaylist()}>
                     <div className="result__image"
                          style={{
                              backgroundImage: "url('http://img.youtube.com/vi/" + this.props.songId + "/mqdefault.jpg')"

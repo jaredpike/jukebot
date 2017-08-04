@@ -18,7 +18,8 @@ class SongPicker extends Component {
                             <Result title="Krewella - Alive"
                                     channel="KrewellaVEVO"
                                     length="4:05"
-                                    songId="76jARSWqcdM"/>
+                                    songId="76jARSWqcdM"
+                                    addToPlaylist={this.props.addToPlaylist}/>
                         </ul>
                     </div>
                 </div>
