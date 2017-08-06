@@ -15,11 +15,11 @@ class SongPicker extends Component {
 
                     <div className="results">
                         <ul className="results__list">
-                            <Result title="Krewella - Alive"
-                                    channel="KrewellaVEVO"
-                                    length="4:05"
-                                    songId="76jARSWqcdM"
-                                    addToPlaylist={this.props.addToPlaylist}/>
+                            {
+                                Object
+                                    .keys(this.props.results)
+                                    .map(key => <Result key={key} index={key} details={this.props.results[key]} addToPlaylist={this.props.addToPlaylist}/>)
+                            }
                         </ul>
                     </div>
                 </div>

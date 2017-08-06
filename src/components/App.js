@@ -3,6 +3,7 @@ import './App.scss';
 import Header from './Header';
 import SongPicker from './SongPicker';
 import Inventory from './Inventory';
+import sampleResults from '../sample-results';
 
 class App extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class App extends Component {
 
         // set initial state
         this.state = {
-            results: {},
+            results: sampleResults,
             playlist: {},
             currentSong: {}
         };
@@ -29,7 +30,7 @@ class App extends Component {
             <div className="fill-height">
                 <Header name="Playlist"/>
                 <div className="main">
-                    <SongPicker addToPlaylist={this.addToPlaylist} />
+                    <SongPicker results={this.state.results} addToPlaylist={this.addToPlaylist} />
                     <Inventory />
                 </div>
             </div>
