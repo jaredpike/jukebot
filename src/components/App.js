@@ -21,8 +21,6 @@ class App extends Component {
 
     addToPlaylist(song) {
         console.log(`adding ${song} to playlist`);
-
-        // get song object
     }
 
     render() {

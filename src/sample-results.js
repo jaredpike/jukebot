@@ -7,13 +7,13 @@ module.exports = {
     },
     result2: {
         title: 'Krewella - Alive',
-        id: '76jARSWqcdM',
+        id: 'J-gYJBsln-w',
         channel: 'KrewellaVEVO',
         length: '3:44'
     },
     result3: {
         title: 'Krewella - We Are One',
-        id: '76jARSWqcdM',
+        id: 'PKi2giB0aIQ',
         channel: 'KrewellaVEVO',
         length: '3:16'
     }
