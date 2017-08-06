@@ -1,0 +1,27 @@
+@import '../styles/meta.scss';
+
+.playlist {
+  padding: 4rem 4rem 0;
+  overflow-y: scroll;
+
+  &__up-next {
+    @include small-caps();
+  }
+
+  &__list {
+    padding-top: 2rem;
+    color: white;
+  }
+
+  &__item {
+    @include copy-c();
+
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    padding: 0.5rem 0;
+  }
+
+  &__order {
+    width: 4rem;
+  }
+}
