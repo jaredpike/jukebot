@@ -1,0 +1,50 @@
+@import '../styles/meta';
+
+.controls {
+  background: -color(biscay);
+  height: 6.4rem;
+
+  &__inner {
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    cursor: pointer;
+    margin: 0 0.4rem;
+    padding: 0 1rem;
+    height: 100%;
+    opacity: 0.8;
+    color: -color(white);
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+
+  &__icon {
+    fill: -color(white);
+    width: 2rem;
+    height: 2rem;
+
+    &--play,
+    &--pause {
+      fill: -color(white);
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+
+    &--prev,
+    &--next {
+      fill: -color(white);
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}

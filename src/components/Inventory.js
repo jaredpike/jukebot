@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NowPlaying from './NowPlaying';
+import Controls from './Controls';
 
 class Inventory extends Component {
     render() {
@@ -7,6 +8,7 @@ class Inventory extends Component {
             <div className="section--right">
                 <div className="section__inner">
                     <NowPlaying />
+                    <Controls />
                 </div>
             </div>
         );
