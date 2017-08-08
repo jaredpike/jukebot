@@ -4,6 +4,7 @@ import Header from './Header';
 import SongPicker from './SongPicker';
 import Inventory from './Inventory';
 import sampleResults from '../sample-results';
+import samplePlaylist from '../sample-playlist';
 
 class App extends Component {
     constructor() {
@@ -14,13 +15,21 @@ class App extends Component {
         // set initial state
         this.state = {
             results: sampleResults,
-            playlist: {},
-            currentSong: {}
+            playlist: samplePlaylist
         };
     }
 
     addToPlaylist(song) {
-        console.log(`adding ${song} to playlist`);
+        console.dir(song);
+
+        // copy existing playlist object
+        const playlist = [...this.state.playlist];
+
+        // push song into array
+        playlist.push(song);
+
+        // update playlist state
+        this.setState({playlist});
     }
 
     render() {
@@ -29,7 +38,7 @@ class App extends Component {
                 <Header name="Playlist"/>
                 <div className="main">
                     <SongPicker results={this.state.results} addToPlaylist={this.addToPlaylist} />
-                    <Inventory />
+                    <Inventory results={this.state.results} playlist={this.state.playlist}/>
                 </div>
             </div>
         );

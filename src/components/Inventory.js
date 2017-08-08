@@ -10,7 +10,7 @@ class Inventory extends Component {
                 <div className="section__inner">
                     <NowPlaying />
                     <Controls />
-                    <Playlist />
+                    <Playlist results={this.props.results} playlist={this.props.playlist}/>
                 </div>
             </div>
         );

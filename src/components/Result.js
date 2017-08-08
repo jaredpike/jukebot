@@ -3,10 +3,10 @@ import './Result.scss';
 
 class Result extends Component {
     render() {
-        const { details, index } = this.props;
+        const { details } = this.props;
         return (
             <li className="result">
-                <button className="result__link" onClick={() => this.props.addToPlaylist(index)}>
+                <button className="result__link" onClick={() => this.props.addToPlaylist(details)}>
                     <div className="result__image"
                          style={{
                              backgroundImage: "url('http://img.youtube.com/vi/" + details.id + "/mqdefault.jpg')"
