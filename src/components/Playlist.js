@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Playlist.scss';
+import PlaylistItem from './PlaylistItem';
 
 class Playlist extends Component {
     render() {
@@ -8,10 +9,11 @@ class Playlist extends Component {
                 <div className="playlist__inner">
                     <span className="playlist__up-next">Up Next</span>
                     <ul className="playlist__list">
-                        <li className="playlist__item">
-                            <div className="playlist__order">1</div>
-                            <h3 className="playlist__title">Artist - Title</h3>
-                        </li>
+                        {
+                        Object
+                        .keys(this.props.playlist)
+                        .map(key => <PlaylistItem key={key} index={key} details={this.props.playlist[key]} />)
+                        }
                     </ul>
                 </div>
             </div>
