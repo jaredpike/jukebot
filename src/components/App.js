@@ -3,8 +3,7 @@ import './App.scss';
 import Header from './Header';
 import SongPicker from './SongPicker';
 import Inventory from './Inventory';
-import sampleResults from '../sample-results';
-import samplePlaylist from '../sample-playlist';
+import youtube from 'youtube-search';
 
 class App extends Component {
     constructor() {
@@ -15,16 +14,16 @@ class App extends Component {
 
         // set initial state
         this.state = {
-            results: sampleResults,
-            playlist: samplePlaylist
+            results: [],
+            playlist: []
         };
     }
 
     addToPlaylist(song) {
-        // copy existing playlist array
+        // copy existing playlist
         const playlist = [...this.state.playlist];
 
-        // push song into array
+        // push song into playlist array
         playlist.push(song);
 
         // update playlist state
@@ -32,7 +31,19 @@ class App extends Component {
     }
 
     search(query) {
-        console.log(`searching for ${query}`);
+        // search options: https://developers.google.com/youtube/v3/docs/search/list
+        const opts = {
+            maxResults: 10,
+            key: 'AIzaSyDRJpXF7CJ1uqGYgwRlqXQfmXFFHCYoXxY',
+            type: 'video',
+            videoEmbeddable: true
+        };
+
+        youtube(query, opts, (err, results) => {
+            if (err) return console.log(err);
+
+            this.setState({results: results});
+        });
     }
 
     render() {

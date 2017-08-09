@@ -14,9 +14,8 @@ class Result extends Component {
                     </div>
                     <div className="result__contents">
                         <h2 className="result__title">{details.title}</h2>
-                        <p className="result__channel">{details.channel}</p>
+                        <p className="result__channel">{details.channelTitle}</p>
                     </div>
-                    <div className="result__length">{details.length}</div>
                 </button>
             </li>
         );
