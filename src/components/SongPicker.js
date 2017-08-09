@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import './SongPicker.scss';
 import Result from './Result';
+import Search from './Search';
 
 class SongPicker extends Component {
     render() {
         return (
             <div className="section--left">
                 <div className="section__inner">
-                    <form className="search">
-                        <div className="search__input">
-                            <input type="text" placeholder="Search YouTube" />
-                        </div>
-                    </form>
+                    <Search search={this.props.search}/>
 
                     <div className="results">
                         <ul className="results__list">
