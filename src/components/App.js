@@ -11,11 +11,14 @@ class App extends Component {
 
         this.addToPlaylist = this.addToPlaylist.bind(this);
         this.search = this.search.bind(this);
+        this.playNextSong = this.playNextSong.bind(this);
 
         // set initial state
         this.state = {
             results: [],
-            playlist: []
+            playlist: [],
+            playedSongs: [],
+            currentSong: ''
         };
     }
 
@@ -23,11 +26,34 @@ class App extends Component {
         // copy existing playlist
         const playlist = [...this.state.playlist];
 
+        // if playlist is empty and no songs are playing
+        if (playlist.length === 0 && !this.state.currentSong) {
+            this.setState({currentSong: song});
+            return;
+        }
+
         // push song into playlist array
         playlist.push(song);
 
         // update playlist state
         this.setState({playlist});
+    }
+
+    playNextSong() {
+        const nextSong = this.state.playlist[0];
+
+        // if there's no next song, clear current song state
+        if (!nextSong) {
+            console.log('no next song');
+            this.setState({currentSong: ''})
+            return;
+        }
+
+        // change to next song
+        this.setState({currentSong: nextSong})
+
+        // remove first item from playlist
+        this.setState({playlist: this.state.playlist.filter((_, i) => i !== 0)});
     }
 
     search(query) {
@@ -52,7 +78,7 @@ class App extends Component {
                 <Header name="Playlist"/>
                 <div className="main">
                     <SongPicker results={this.state.results} addToPlaylist={this.addToPlaylist} search={this.search}/>
-                    <Inventory results={this.state.results} playlist={this.state.playlist}/>
+                    <Inventory results={this.state.results} playlist={this.state.playlist} playNextSong={this.playNextSong} currentSong={this.state.currentSong}/>
                 </div>
             </div>
         );

@@ -8,7 +8,11 @@ class Inventory extends Component {
         return (
             <div className="section--right">
                 <div className="section__inner">
-                    <NowPlaying />
+                    <NowPlaying
+                        playNextSong={this.props.playNextSong}
+                        playlist={this.props.playlist}
+                        currentSong={this.props.currentSong}
+                    />
                     <Controls />
                     <Playlist results={this.props.results} playlist={this.props.playlist}/>
                 </div>

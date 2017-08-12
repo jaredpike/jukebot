@@ -6,6 +6,12 @@
   height: 0;
   padding-top: 56.25%;
   position: relative;
+  
+  &.paused {
+    &:before {
+      opacity: 1;
+    }
+  }
 
   iframe {
     position: absolute;
@@ -34,6 +40,7 @@
     background-image: linear-gradient(to bottom right, #760E85 0%, #7D2B0A 100%);
     opacity: 0.8;
     z-index: -z(background);
+    transition: opacity 0.2s $ease-in-out-quart;
   }
 
   &__heading {
