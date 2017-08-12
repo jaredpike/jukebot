@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Controls.scss';
 import LoopIcon from './vectors/LoopIcon';
-import PauseIcon from './vectors/PauseIcon';
+// import PauseIcon from './vectors/PauseIcon';
 import NextIcon from './vectors/NextIcon';
 import PrevIcon from './vectors/PrevIcon';
 import PlayIcon from './vectors/PlayIcon';
