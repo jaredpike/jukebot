@@ -14,7 +14,8 @@
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: $border-radius;
 
-    &:hover {
+    &:hover,
+    &:focus {
       @extend %big-shadow;
 
       background-color: white;
