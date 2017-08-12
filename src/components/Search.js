@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Search.scss';
+import SearchIcon from './vectors/SearchIcon';
 
 class Search extends Component {
     constructor() {
@@ -34,6 +35,10 @@ class Search extends Component {
         return (
             <form className="search" onSubmit={this.handleSubmit}>
                 <div className="search__input">
+                    <div className="search__icon">
+                        <SearchIcon />
+                    </div>
+                        
                     <input type="text" placeholder="Search YouTube" value={this.state.value} onChange={this.handleChange} onFocus={this.onFocus}/>
                 </div>
             </form>

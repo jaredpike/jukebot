@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './Controls.scss';
+import LoopIcon from './vectors/LoopIcon';
+import PauseIcon from './vectors/PauseIcon';
+import NextIcon from './vectors/NextIcon';
+import PrevIcon from './vectors/PrevIcon';
+import PlayIcon from './vectors/PlayIcon';
+import ShuffleIcon from './vectors/ShuffleIcon';
 
 class Controls extends Component {
     render() {
@@ -7,19 +13,19 @@ class Controls extends Component {
             <div className="controls">
                 <div className="controls__inner">
                     <button className="controls__button">
-                        Shuffle
+                        <ShuffleIcon />
                     </button>
                     <button className="controls__button">
-                        Prev
+                        <PrevIcon />
                     </button>
                     <button className="controls__button">
-                        Play/Pause
+                        <PlayIcon />
                     </button>
                     <button className="controls__button">
-                        Next
+                        <NextIcon />
                     </button>
                     <button className="controls__button">
-                        Loop
+                        <LoopIcon />
                     </button>
                 </div>
             </div>

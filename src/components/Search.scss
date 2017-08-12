@@ -9,7 +9,10 @@
     height: 2.4rem;
     top: 2rem;
     left: 2.3rem;
-    fill: -color(biscay);
+
+    svg {
+      fill: -color(biscay);
+    }
   }
 
   &__input {
