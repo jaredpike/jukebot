@@ -9,7 +9,7 @@ class Result extends Component {
                 <button className="result__link" onClick={() => this.props.addToPlaylist(details)}>
                     <div className="result__image"
                          style={{
-                             backgroundImage: "url('http://img.youtube.com/vi/" + details.id + "/mqdefault.jpg')"
+                             backgroundImage: "url('https://img.youtube.com/vi/" + details.id + "/mqdefault.jpg')"
                          }}>
                     </div>
                     <div className="result__contents">
