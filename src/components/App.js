@@ -4,6 +4,7 @@ import Header from './Header';
 import SongPicker from './SongPicker';
 import Inventory from './Inventory';
 import youtube from 'youtube-search';
+import update from 'immutability-helper';
 
 class App extends Component {
     constructor() {
@@ -12,6 +13,7 @@ class App extends Component {
         this.addToPlaylist = this.addToPlaylist.bind(this);
         this.search = this.search.bind(this);
         this.playNextSong = this.playNextSong.bind(this);
+        this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
 
         // set initial state
         this.state = {
@@ -37,6 +39,12 @@ class App extends Component {
 
         // update playlist state
         this.setState({playlist});
+    }
+
+    removeFromPlaylist(key) {
+        this.setState({
+            playlist: update(this.state.playlist, {$splice: [[key, 1]]})
+        })
     }
 
     playNextSong() {
@@ -77,8 +85,16 @@ class App extends Component {
             <div className="fill-height">
                 <Header name="Playlist"/>
                 <div className="main">
-                    <SongPicker results={this.state.results} addToPlaylist={this.addToPlaylist} search={this.search}/>
-                    <Inventory results={this.state.results} playlist={this.state.playlist} playNextSong={this.playNextSong} currentSong={this.state.currentSong}/>
+                    <SongPicker results={this.state.results}
+                                addToPlaylist={this.addToPlaylist}
+                                search={this.search}
+                    />
+                    <Inventory results={this.state.results}
+                               playlist={this.state.playlist}
+                               playNextSong={this.playNextSong}
+                               currentSong={this.state.currentSong}
+                               removeFromPlaylist={this.removeFromPlaylist}
+                    />
                 </div>
             </div>
         );

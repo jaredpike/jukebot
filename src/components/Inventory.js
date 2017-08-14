@@ -14,7 +14,10 @@ class Inventory extends Component {
                         currentSong={this.props.currentSong}
                     />
                     <Controls />
-                    <Playlist results={this.props.results} playlist={this.props.playlist}/>
+                    <Playlist results={this.props.results}
+                              playlist={this.props.playlist}
+                              removeFromPlaylist={this.props.removeFromPlaylist}
+                    />
                 </div>
             </div>
         );
