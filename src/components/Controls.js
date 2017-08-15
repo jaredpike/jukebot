@@ -21,7 +21,7 @@ class Controls extends Component {
                     <button className="controls__button">
                         <PlayIcon />
                     </button>
-                    <button className="controls__button">
+                    <button onClick={this.props.playNextSong} className="controls__button">
                         <NextIcon />
                     </button>
                     <button className="controls__button">
