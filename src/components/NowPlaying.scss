@@ -6,6 +6,7 @@
   height: 0;
   padding-top: 56.25%;
   position: relative;
+  overflow: hidden;
   
   &.paused {
     &:before {
@@ -32,6 +33,7 @@
     align-items: center;
     justify-content: center;
     z-index: -z(content);
+    padding: 1rem;
   }
 
   &:before {
