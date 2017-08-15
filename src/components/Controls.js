@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Controls.scss';
 import LoopIcon from './vectors/LoopIcon';
-// import PauseIcon from './vectors/PauseIcon';
+import PauseIcon from './vectors/PauseIcon';
 import NextIcon from './vectors/NextIcon';
 import PrevIcon from './vectors/PrevIcon';
 import PlayIcon from './vectors/PlayIcon';
@@ -12,19 +12,23 @@ class Controls extends Component {
         return (
             <div className="controls">
                 <div className="controls__inner">
-                    <button className="controls__button">
+                    <button className="controls__button" disabled>
                         <ShuffleIcon />
                     </button>
-                    <button className="controls__button">
+                    <button className="controls__button" disabled>
                         <PrevIcon />
                     </button>
-                    <button className="controls__button">
-                        <PlayIcon />
+                    <button onClick={this.props.togglePlayPause} className="controls__button">
+                        {this.props.isPlaying ? (
+                            <PauseIcon />
+                        ) : (
+                            <PlayIcon />
+                        )}
                     </button>
-                    <button onClick={this.props.playNextSong} className="controls__button">
+                    <button onClick={this.props.playNextSong} className="controls__button" disabled={this.props.playlist ? false : true}>
                         <NextIcon />
                     </button>
-                    <button className="controls__button">
+                    <button className="controls__button" disabled>
                         <LoopIcon />
                     </button>
                 </div>

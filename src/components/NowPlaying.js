@@ -5,13 +5,15 @@ import Player from './Player';
 class NowPlaying extends Component {
     render() {
         return (
-            <div className={"now-playing " + (this.props.currentSong ? 'playing' : 'paused')}>
+            <div className={"now-playing " + (this.props.isPlaying ? 'playing' : 'paused')}>
                 <Player playNextSong={this.props.playNextSong}
                         playlist={this.props.playlist}
-                        currentSong={this.props.currentSong} />
+                        currentSong={this.props.currentSong}
+                        isPlaying={this.props.isPlaying}
+                />
                 <div className="now-playing__inner">
                     <h1 className="now-playing__heading">
-                        <span>{(this.props.currentSong) ? 'Now Playing' : 'Paused'} </span>
+                        <span>{(this.props.isPlaying) ? 'Now Playing' : 'Paused'} </span>
                         <span>{ this.props.currentSong.title }</span>
                     </h1>
                 </div>

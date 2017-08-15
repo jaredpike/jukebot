@@ -14,13 +14,15 @@ class App extends Component {
         this.search = this.search.bind(this);
         this.playNextSong = this.playNextSong.bind(this);
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
+        this.togglePlayPause = this.togglePlayPause.bind(this);
 
         // set initial state
         this.state = {
             results: [],
             playlist: [],
             playedSongs: [],
-            currentSong: ''
+            currentSong: '',
+            isPlaying: false
         };
     }
 
@@ -31,6 +33,7 @@ class App extends Component {
         // if playlist is empty and no songs are playing
         if (playlist.length === 0 && !this.state.currentSong) {
             this.setState({currentSong: song});
+            this.togglePlayPause();
             return;
         }
 
@@ -53,7 +56,8 @@ class App extends Component {
         // if there's no next song, clear current song state
         if (!nextSong) {
             console.log('no next song');
-            this.setState({currentSong: ''})
+            this.setState({currentSong: ''});
+            this.setState({isPlaying: false});
             return;
         }
 
@@ -62,6 +66,10 @@ class App extends Component {
 
         // remove first item from playlist
         this.setState({playlist: this.state.playlist.filter((_, i) => i !== 0)});
+    }
+
+    togglePlayPause() {
+        this.setState({isPlaying: !this.state.isPlaying});
     }
 
     search(query) {
@@ -94,6 +102,8 @@ class App extends Component {
                                playNextSong={this.playNextSong}
                                currentSong={this.state.currentSong}
                                removeFromPlaylist={this.removeFromPlaylist}
+                               isPlaying={this.state.isPlaying}
+                               togglePlayPause={this.togglePlayPause}
                     />
                 </div>
             </div>

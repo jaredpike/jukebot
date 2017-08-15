@@ -19,12 +19,16 @@
     opacity: 0.8;
     color: -color(white);
 
-    &:hover {
+    &:hover:not(:disabled) {
       opacity: 1;
     }
 
-    &:active {
+    &:active:not(:disabled) {
       transform: scale(0.92);
+    }
+
+    &:disabled {
+      cursor: default;
     }
   }
 
