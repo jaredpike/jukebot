@@ -21,7 +21,8 @@
 
 .section--left {
   flex: 1.5 1 100%;
-  transition: all 0.3s $ease-in-out-quart;
+  transition: flex 0.3s $ease-in-out-quart;
+  will-change: flex;
 
   .section__inner {
     padding-top: 6vw;
@@ -34,4 +35,10 @@
 .section--right {
   flex: 1;
   background: -color(firefly);
+
+  .section__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }
