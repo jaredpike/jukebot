@@ -7,6 +7,7 @@ class Player extends Component {
             <ReactPlayer
                 url={'https://www.youtube.com/watch?v=' + this.props.currentSong.id}
                 playing={this.props.isPlaying}
+                onEnded={this.props.playNextSong}
             />
         );
     }
