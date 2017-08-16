@@ -61,6 +61,9 @@ class App extends Component {
             return;
         }
 
+        // make sure player is playing
+        this.setState({isPlaying: true});
+
         // change to next song
         this.setState({currentSong: nextSong})
 
