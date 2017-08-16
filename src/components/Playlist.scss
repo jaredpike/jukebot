@@ -3,6 +3,7 @@
 .playlist {
   padding: 4rem;
   overflow-y: scroll;
+  flex: 1;
 
   &__up-next {
     @include small-caps();
