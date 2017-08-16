@@ -55,7 +55,6 @@ class App extends Component {
 
         // if there's no next song, clear current song state
         if (!nextSong) {
-            console.log('no next song');
             this.setState({currentSong: ''});
             this.setState({isPlaying: false});
             return;
@@ -95,7 +94,7 @@ class App extends Component {
         return (
             <div className="fill-height">
                 <Header name="Playlist"/>
-                <div className="main">
+                <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
                     <SongPicker results={this.state.results}
                                 addToPlaylist={this.addToPlaylist}
                                 search={this.search}

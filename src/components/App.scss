@@ -7,6 +7,12 @@
   width: 100%;
   height: 100%;
   display: flex;
+
+  &.has-songs {
+    .section--left {
+      flex: 1.5 1 0%;
+    }
+  }
 }
 
 [class*="section--"] {
@@ -14,7 +20,8 @@
 }
 
 .section--left {
-  flex: 1.5;
+  flex: 1.5 1 100%;
+  transition: all 0.3s $ease-in-out-quart;
 
   .section__inner {
     padding-top: 6vw;
