@@ -22,7 +22,8 @@ class App extends Component {
             playlist: [],
             playedSongs: [],
             currentSong: '',
-            isPlaying: false
+            isPlaying: false,
+            progress: ''
         };
     }
 
