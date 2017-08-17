@@ -39,11 +39,16 @@
   }
 
   &__close {
-    @include copy-c();
-    color: -color(white);
     padding-left: 1rem;
     cursor: pointer;
     visibility: hidden;
     margin-left: 0.5rem;
+    margin-top: 0.5rem;
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: -color(white);
+    }
   }
 }
