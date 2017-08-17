@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './NowPlaying.scss';
-import Player from './Player';
+import ReactPlayer from 'react-player';
 
 class NowPlaying extends Component {
     render() {
         return (
             <div className={"now-playing " + (this.props.isPlaying ? 'playing' : 'paused')}>
-                <Player playNextSong={this.props.playNextSong}
-                        playlist={this.props.playlist}
-                        currentSong={this.props.currentSong}
-                        isPlaying={this.props.isPlaying}
+                <ReactPlayer
+                    url={'https://www.youtube.com/watch?v=' + this.props.currentSong.id}
+                    playing={this.props.isPlaying}
+                    onEnded={this.props.playNextSong}
+                    onError={this.props.playNextSong}
                 />
                 <div className="now-playing__inner">
                     <h1 className="now-playing__heading">
