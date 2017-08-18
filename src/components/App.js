@@ -16,6 +16,7 @@ class App extends Component {
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
         this.playSong = this.playSong.bind(this);
+        this.onUnload = this.onUnload.bind(this);
 
         // set initial state
         this.state = {
@@ -101,6 +102,21 @@ class App extends Component {
 
             this.setState({results: results});
         });
+    }
+
+    onUnload = e => {
+        if (this.state.isPlaying == true && this.state.currentSong) {
+            e.returnValue = 'Are you sure you want to leave this page?';
+            return 'Are you sure you want to leave this page?';
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener("beforeunload", this.onUnload)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("beforeunload", this.onUnload)
     }
 
     render() {
