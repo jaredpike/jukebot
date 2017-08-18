@@ -22,6 +22,7 @@ class Inventory extends Component {
                     <Playlist results={this.props.results}
                               playlist={this.props.playlist}
                               removeFromPlaylist={this.props.removeFromPlaylist}
+                              playSong={this.props.playSong}
                     />
                 </div>
             </div>

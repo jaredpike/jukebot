@@ -15,6 +15,7 @@ class App extends Component {
         this.playNextSong = this.playNextSong.bind(this);
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
+        this.playSong = this.playSong.bind(this);
 
         // set initial state
         this.state = {
@@ -71,6 +72,17 @@ class App extends Component {
         this.setState({playlist: this.state.playlist.filter((_, i) => i !== 0)});
     }
 
+    playSong(song, key) {
+        // set current song
+        this.setState({currentSong: song});
+
+        // remove from playlist
+        this.removeFromPlaylist(key);
+
+        // make sure player is playing
+        this.setState({isPlaying: true});
+    }
+
     togglePlayPause() {
         this.setState({isPlaying: !this.state.isPlaying});
     }
@@ -107,6 +119,7 @@ class App extends Component {
                                removeFromPlaylist={this.removeFromPlaylist}
                                isPlaying={this.state.isPlaying}
                                togglePlayPause={this.togglePlayPause}
+                               playSong={this.playSong}
                     />
                 </div>
             </div>

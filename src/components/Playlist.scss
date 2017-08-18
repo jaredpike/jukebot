@@ -23,8 +23,9 @@
     align-items: flex-start;
 
     &:hover {
-      .playlist__close {
-        visibility: visible;
+      .playlist__icon {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   }
@@ -38,12 +39,13 @@
     flex: 1;
   }
 
-  &__close {
-    padding-left: 1rem;
+  &__icon {
+    padding: 0.5rem;
     cursor: pointer;
-    visibility: hidden;
+    opacity: 0;
     margin-left: 0.5rem;
-    margin-top: 0.5rem;
+    transform: translateX(1rem);
+    transition: all 0.25s $ease-in-out-quart;
 
     svg {
       width: 1.6rem;

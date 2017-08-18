@@ -12,7 +12,7 @@ class Playlist extends Component {
                         {
                         Object
                         .keys(this.props.playlist)
-                        .map(key => <PlaylistItem key={key} index={key} details={this.props.playlist[key]} removeFromPlaylist={this.props.removeFromPlaylist} />)
+                        .map(key => <PlaylistItem key={key} index={key} details={this.props.playlist[key]} removeFromPlaylist={this.props.removeFromPlaylist} playSong={this.props.playSong} />)
                         }
                     </ul>
                 </div>
