@@ -105,7 +105,7 @@ class App extends Component {
     }
 
     onUnload = e => {
-        if (this.state.isPlaying == true && this.state.currentSong) {
+        if (this.state.isPlaying === true && this.state.currentSong) {
             e.returnValue = 'Are you sure you want to leave this page?';
             return 'Are you sure you want to leave this page?';
         }
