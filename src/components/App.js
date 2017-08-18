@@ -91,7 +91,7 @@ class App extends Component {
     search(query) {
         // search options: https://developers.google.com/youtube/v3/docs/search/list
         const opts = {
-            maxResults: 10,
+            maxResults: 12,
             key: 'AIzaSyDRJpXF7CJ1uqGYgwRlqXQfmXFFHCYoXxY',
             type: 'video',
             videoEmbeddable: true
