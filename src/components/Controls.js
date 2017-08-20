@@ -31,6 +31,7 @@ class Controls extends Component {
                     <button className="controls__button" disabled>
                         <LoopIcon />
                     </button>
+                    <input type='range' min={0} max={1} step='any' value={this.props.volume} onChange={this.props.setVolume} />
                 </div>
             </div>
         )

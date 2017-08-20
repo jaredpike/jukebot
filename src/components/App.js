@@ -15,6 +15,7 @@ class App extends Component {
         this.playNextSong = this.playNextSong.bind(this);
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
+        this.setVolume = this.setVolume.bind(this);
         this.playSong = this.playSong.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
@@ -25,7 +26,7 @@ class App extends Component {
             playedSongs: [],
             currentSong: '',
             isPlaying: false,
-            progress: ''
+            volume: 0.8
         };
     }
 
@@ -103,6 +104,9 @@ class App extends Component {
             this.setState({results: results});
         });
     }
+    setVolume = e => {
+        this.setState({ volume: parseFloat(e.target.value) })
+    }
 
     onUnload = e => {
         if (this.state.isPlaying === true && this.state.currentSong) {
@@ -112,11 +116,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener("beforeunload", this.onUnload)
+        window.addEventListener("beforeunload", this.onUnload);
     }
 
     componentWillUnmount() {
-        window.removeEventListener("beforeunload", this.onUnload)
+        window.removeEventListener("beforeunload", this.onUnload);
     }
 
     render() {
@@ -127,6 +131,7 @@ class App extends Component {
                     <SongPicker results={this.state.results}
                                 addToPlaylist={this.addToPlaylist}
                                 search={this.search}
+                                ref="hello"
                     />
                     <Inventory results={this.state.results}
                                playlist={this.state.playlist}
@@ -136,6 +141,8 @@ class App extends Component {
                                isPlaying={this.state.isPlaying}
                                togglePlayPause={this.togglePlayPause}
                                playSong={this.playSong}
+                               setVolume={this.setVolume}
+                               volume={this.state.volume}
                     />
                 </div>
             </div>

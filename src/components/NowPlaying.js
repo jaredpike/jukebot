@@ -12,6 +12,7 @@ class NowPlaying extends Component {
                     playing={this.props.isPlaying}
                     onEnded={this.props.playNextSong}
                     onError={this.props.playNextSong}
+                    volume={this.props.volume}
                 />
                 <div className="now-playing__inner">
                     <a className="now-playing__heading" href={youTubeUrl(this.props.currentSong.id)} target="_blank">
