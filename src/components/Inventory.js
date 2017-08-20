@@ -29,12 +29,15 @@ class Inventory extends Component {
                                   onSeekMouseUp={this.props.onSeekMouseUp}
                                   onSeekMouseDown={this.props.onSeekMouseDown}
                                   played={this.props.played}
+                                  shuffle={this.props.shuffle}
+                                  toggleShuffle={this.props.toggleShuffle}
                         />
                     </div>
                     <Playlist results={this.props.results}
                               playlist={this.props.playlist}
                               removeFromPlaylist={this.props.removeFromPlaylist}
                               playSong={this.props.playSong}
+                              shuffle={this.props.shuffle}
                     />
                 </div>
             </div>

@@ -15,6 +15,7 @@ class App extends Component {
         this.playNextSong = this.playNextSong.bind(this);
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
+        this.toggleShuffle = this.toggleShuffle.bind(this);
         this.setVolume = this.setVolume.bind(this);
         this.onProgress = this.onProgress.bind(this);
         this.playSong = this.playSong.bind(this);
@@ -30,6 +31,7 @@ class App extends Component {
             isPlaying: false,
             volume: 0.8,
             played: 0,
+            shuffle: false
         };
     }
 
@@ -58,7 +60,14 @@ class App extends Component {
     }
 
     playNextSong() {
-        const nextSong = this.state.playlist[0];
+        let nextSongIndex = 0;
+
+        // if shuffle, randomize selection
+        if (this.state.shuffle) {
+            nextSongIndex = Math.floor(Math.random()*this.state.playlist.length);
+        }
+
+        const nextSong = this.state.playlist[nextSongIndex];
 
         // if there's no next song, clear current song state
         if (!nextSong) {
@@ -92,6 +101,10 @@ class App extends Component {
 
     togglePlayPause() {
         this.setState({isPlaying: !this.state.isPlaying});
+    }
+
+    toggleShuffle() {
+        this.setState({shuffle: !this.state.shuffle});
     }
 
     search(query) {
@@ -180,6 +193,8 @@ class App extends Component {
                                onSeekMouseDown={this.onSeekMouseDown}
                                played={this.state.played}
                                resetProgress={this.resetProgress}
+                               shuffle={this.state.shuffle}
+                               toggleShuffle={this.toggleShuffle}
                     />
                 </div>
             </div>

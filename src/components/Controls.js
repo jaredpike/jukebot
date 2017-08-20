@@ -21,12 +21,15 @@ class Controls extends Component {
                         className="controls__seek"
                     />
                     <progress className="controls__progress" max={1} value={this.props.played} />
-                    <button className="controls__button" disabled>
+
+                    <button className={"controls__button " + (this.props.shuffle ? 'is-active' : '')} onClick={this.props.toggleShuffle}>
                         <ShuffleIcon />
                     </button>
+
                     <button className="controls__button" onClick={this.props.resetProgress}>
                         <PrevIcon />
                     </button>
+
                     <button onClick={this.props.togglePlayPause} className="controls__button">
                         {this.props.isPlaying ? (
                             <PauseIcon />
@@ -34,12 +37,15 @@ class Controls extends Component {
                             <PlayIcon />
                         )}
                     </button>
+
                     <button onClick={this.props.playNextSong} className="controls__button" disabled={this.props.playlist ? false : true}>
                         <NextIcon />
                     </button>
+
                     <button className="controls__button" disabled>
                         <LoopIcon />
                     </button>
+
                     <div className="volume">
                         <div className="volume__icon">
                             Volume

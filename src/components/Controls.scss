@@ -33,6 +33,14 @@
     &:disabled {
       cursor: default;
     }
+
+    &.is-active {
+      opacity: 1;
+
+      .controls__icon {
+        fill: -color(coral);
+      }
+    }
   }
 
   &__icon {
