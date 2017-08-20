@@ -29,7 +29,7 @@ class App extends Component {
             currentSong: '',
             isPlaying: false,
             volume: 0.8,
-            played: 0
+            played: 0,
         };
     }
 
@@ -64,9 +64,14 @@ class App extends Component {
         if (!nextSong) {
             this.setState({
                 currentSong: '',
-                isPlaing: false
+                isPlaying: false
             });
             return;
+        }
+
+        // if the next song is the same as the current, reset to 0
+        if (nextSong == this.state.currentSong) {
+            this.resetProgress();
         }
 
         // play next song
