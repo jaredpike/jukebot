@@ -30,6 +30,17 @@
     max-width: 64rem;
     margin: 0 auto;
   }
+
+  &::-webkit-scrollbar {
+    background-color: -color(royal);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 4px solid -color(royal);
+    background-color: -color(biscay);
+    transition: all 0.2s linear;
+  }
 }
 
 .section--right {
