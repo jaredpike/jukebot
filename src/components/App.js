@@ -16,7 +16,9 @@ class App extends Component {
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
         this.setVolume = this.setVolume.bind(this);
+        this.onProgress = this.onProgress.bind(this);
         this.playSong = this.playSong.bind(this);
+        this.resetProgress = this.resetProgress.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -26,7 +28,8 @@ class App extends Component {
             playedSongs: [],
             currentSong: '',
             isPlaying: false,
-            volume: 0.8
+            volume: 0.8,
+            played: 0
         };
     }
 
@@ -59,30 +62,27 @@ class App extends Component {
 
         // if there's no next song, clear current song state
         if (!nextSong) {
-            this.setState({currentSong: ''});
-            this.setState({isPlaying: false});
+            this.setState({
+                currentSong: '',
+                isPlaing: false
+            });
             return;
         }
 
-        // make sure player is playing
-        this.setState({isPlaying: true});
-
-        // change to next song
-        this.setState({currentSong: nextSong})
-
-        // remove first item from playlist
-        this.setState({playlist: this.state.playlist.filter((_, i) => i !== 0)});
+        // play next song
+        this.playSong(nextSong, 0);
     }
 
     playSong(song, key) {
         // set current song
-        this.setState({currentSong: song});
+        this.setState({
+            currentSong: song,
+            isPlaying: true,
+            played: 0
+        });
 
         // remove from playlist
         this.removeFromPlaylist(key);
-
-        // make sure player is playing
-        this.setState({isPlaying: true});
     }
 
     togglePlayPause() {
@@ -104,6 +104,31 @@ class App extends Component {
             this.setState({results: results});
         });
     }
+
+    resetProgress() {
+        this.player.seekTo(0);
+    }
+
+    onSeekMouseDown = e => {
+        this.setState({ seeking: true });
+    }
+
+    onSeekChange = e => {
+        this.setState({ played: parseFloat(e.target.value) });
+    }
+
+    onSeekMouseUp = e => {
+        this.setState({ seeking: false });
+        this.player.seekTo(parseFloat(e.target.value));
+    }
+
+    onProgress = state => {
+        // We only want to update time slider if we are not currently seeking
+        if (!this.state.seeking) {
+            this.setState(state)
+        }
+    }
+
     setVolume = e => {
         this.setState({ volume: parseFloat(e.target.value) })
     }
@@ -131,7 +156,7 @@ class App extends Component {
                     <SongPicker results={this.state.results}
                                 addToPlaylist={this.addToPlaylist}
                                 search={this.search}
-                                ref="hello"
+                                playerRef={player => this.player = this}
                     />
                     <Inventory results={this.state.results}
                                playlist={this.state.playlist}
@@ -143,6 +168,13 @@ class App extends Component {
                                playSong={this.playSong}
                                setVolume={this.setVolume}
                                volume={this.state.volume}
+                               player={player => { this.player = player }}
+                               onProgress={this.onProgress}
+                               onSeekChange={this.onSeekChange}
+                               onSeekMouseUp={this.onSeekMouseUp}
+                               onSeekMouseDown={this.onSeekMouseDown}
+                               played={this.state.played}
+                               resetProgress={this.resetProgress}
                     />
                 </div>
             </div>
