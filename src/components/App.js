@@ -70,7 +70,7 @@ class App extends Component {
         }
 
         // if the next song is the same as the current, reset to 0
-        if (nextSong == this.state.currentSong) {
+        if (nextSong === this.state.currentSong) {
             this.resetProgress();
         }
 
