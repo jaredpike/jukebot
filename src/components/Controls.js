@@ -12,10 +12,19 @@ class Controls extends Component {
         return (
             <div className="controls">
                 <div className="controls__inner">
+                    <input
+                        type='range' min={0} max={1} step='any'
+                        value={this.props.played}
+                        onMouseDown={this.props.onSeekMouseDown}
+                        onChange={this.props.onSeekChange}
+                        onMouseUp={this.props.onSeekMouseUp}
+                        className="controls__seek"
+                    />
+                    <progress className="controls__progress" max={1} value={this.props.played} />
                     <button className="controls__button" disabled>
                         <ShuffleIcon />
                     </button>
-                    <button className="controls__button" disabled>
+                    <button className="controls__button" onClick={this.props.resetProgress}>
                         <PrevIcon />
                     </button>
                     <button onClick={this.props.togglePlayPause} className="controls__button">
@@ -31,6 +40,12 @@ class Controls extends Component {
                     <button className="controls__button" disabled>
                         <LoopIcon />
                     </button>
+                    <div className="volume">
+                        <div className="volume__icon">
+                            Volume
+                        </div>
+                        <input className="volume__slider" type='range' min={0} max={1} step='any' value={this.props.volume} onChange={this.props.setVolume} />
+                    </div>
                 </div>
             </div>
         )

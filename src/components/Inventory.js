@@ -8,17 +8,29 @@ class Inventory extends Component {
         return (
             <div className="section--right">
                 <div className="section__inner">
-                    <NowPlaying
-                        playNextSong={this.props.playNextSong}
-                        playlist={this.props.playlist}
-                        currentSong={this.props.currentSong}
-                        isPlaying={this.props.isPlaying}
-                    />
-                    <Controls playNextSong={this.props.playNextSong}
-                              togglePlayPause={this.props.togglePlayPause}
-                              isPlaying={this.props.isPlaying}
-                              playlist={this.props.playlist}
-                    />
+                    <div className="section--player">
+                        <NowPlaying
+                            playNextSong={this.props.playNextSong}
+                            playlist={this.props.playlist}
+                            currentSong={this.props.currentSong}
+                            isPlaying={this.props.isPlaying}
+                            volume={this.props.volume}
+                            player={this.props.player}
+                            onProgress={this.props.onProgress}
+                        />
+                        <Controls playNextSong={this.props.playNextSong}
+                                  togglePlayPause={this.props.togglePlayPause}
+                                  isPlaying={this.props.isPlaying}
+                                  playlist={this.props.playlist}
+                                  setVolume={this.props.setVolume}
+                                  volume={this.props.volume}
+                                  resetProgress={this.props.resetProgress}
+                                  onSeekChange={this.props.onSeekChange}
+                                  onSeekMouseUp={this.props.onSeekMouseUp}
+                                  onSeekMouseDown={this.props.onSeekMouseDown}
+                                  played={this.props.played}
+                        />
+                    </div>
                     <Playlist results={this.props.results}
                               playlist={this.props.playlist}
                               removeFromPlaylist={this.props.removeFromPlaylist}
