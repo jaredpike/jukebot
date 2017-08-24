@@ -17,6 +17,7 @@ class Inventory extends Component {
                             volume={this.props.volume}
                             player={this.props.player}
                             onProgress={this.props.onProgress}
+                            onEnd={this.props.onEnd}
                         />
                         <Controls playNextSong={this.props.playNextSong}
                                   togglePlayPause={this.props.togglePlayPause}
@@ -31,6 +32,8 @@ class Inventory extends Component {
                                   played={this.props.played}
                                   shuffle={this.props.shuffle}
                                   toggleShuffle={this.props.toggleShuffle}
+                                  loop={this.props.loop}
+                                  toggleLoop={this.props.toggleLoop}
                         />
                     </div>
                     <Playlist results={this.props.results}

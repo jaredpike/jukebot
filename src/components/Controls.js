@@ -42,7 +42,7 @@ class Controls extends Component {
                         <NextIcon />
                     </button>
 
-                    <button className="controls__button" disabled>
+                    <button className={"controls__button " + (this.props.loop ? 'is-active' : '')} onClick={this.props.toggleLoop}>
                         <LoopIcon />
                     </button>
 

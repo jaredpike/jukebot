@@ -16,10 +16,12 @@ class App extends Component {
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
         this.toggleShuffle = this.toggleShuffle.bind(this);
+        this.toggleLoop = this.toggleLoop.bind(this);
         this.setVolume = this.setVolume.bind(this);
         this.onProgress = this.onProgress.bind(this);
         this.playSong = this.playSong.bind(this);
         this.resetProgress = this.resetProgress.bind(this);
+        this.onEnd = this.onEnd.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -31,7 +33,8 @@ class App extends Component {
             isPlaying: false,
             volume: 0.8,
             played: 0,
-            shuffle: false
+            shuffle: false,
+            loop: false
         };
     }
 
@@ -57,6 +60,15 @@ class App extends Component {
         this.setState({
             playlist: update(this.state.playlist, {$splice: [[key, 1]]})
         })
+    }
+
+    onEnd() {
+        if (this.state.loop) {
+            this.player.seekTo(0);
+            return;
+        }
+
+        this.playNextSong();
     }
 
     playNextSong() {
@@ -105,6 +117,10 @@ class App extends Component {
 
     toggleShuffle() {
         this.setState({shuffle: !this.state.shuffle});
+    }
+
+    toggleLoop() {
+        this.setState({loop: !this.state.loop});
     }
 
     search(query) {
@@ -195,6 +211,9 @@ class App extends Component {
                                resetProgress={this.resetProgress}
                                shuffle={this.state.shuffle}
                                toggleShuffle={this.toggleShuffle}
+                               loop={this.state.loop}
+                               toggleLoop={this.toggleLoop}
+                               onEnd={this.onEnd}
                     />
                 </div>
             </div>

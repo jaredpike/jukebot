@@ -10,7 +10,7 @@ class NowPlaying extends Component {
                 <ReactPlayer
                     url={youTubeUrl(this.props.currentSong.id)}
                     playing={this.props.isPlaying}
-                    onEnded={this.props.playNextSong}
+                    onEnded={this.props.onEnd}
                     onError={this.props.playNextSong}
                     onProgress={this.props.onProgress}
                     volume={this.props.volume}
