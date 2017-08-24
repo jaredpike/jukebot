@@ -15,6 +15,7 @@ class NowPlaying extends Component {
                     onProgress={this.props.onProgress}
                     volume={this.props.volume}
                     ref={this.props.player}
+                    progressFrequency={100}
                 />
                 <div className="now-playing__inner">
                     <a className="now-playing__heading" href={youTubeUrl(this.props.currentSong.id)} target="_blank">
