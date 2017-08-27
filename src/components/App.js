@@ -182,6 +182,14 @@ class App extends Component {
         window.removeEventListener("beforeunload", this.onUnload);
     }
 
+    componentWillUpdate(prevProps, prevState) {
+        if (this.state.currentSong) {
+            document.title = `${(!this.state.isPlaying) ? 'Paused - ' : ''}${this.state.currentSong.title}`;
+        } else {
+            document.title = 'Playlist';
+        }
+    }
+
     render() {
         return (
             <div className="fill-height">
