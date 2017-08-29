@@ -186,14 +186,14 @@ class App extends Component {
         if (this.state.currentSong) {
             document.title = `${(!this.state.isPlaying) ? 'Paused - ' : ''}${this.state.currentSong.title}`;
         } else {
-            document.title = 'Playlist';
+            document.title = 'Jukebot';
         }
     }
 
     render() {
         return (
             <div className="fill-height">
-                <Header name="Playlist"/>
+                <Header name="Jukebot"/>
                 <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
                     <SongPicker results={this.state.results}
                                 addToPlaylist={this.addToPlaylist}
