@@ -9,7 +9,7 @@ class SongPicker extends Component {
                 <div className="section__inner">
                     <Search search={this.props.search}/>
 
-                    <div className="results">
+                    <div className="results" id="results">
                         <ul className="results__list">
                             {
                                 Object

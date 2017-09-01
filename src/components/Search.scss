@@ -1,6 +1,8 @@
 @import '../styles/meta';
 
 .search {
+  @extend %song-picker-width;
+
   position: relative;
 
   &__icon {

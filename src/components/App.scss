@@ -23,23 +23,16 @@
   flex: 1.5 1 100%;
   transition: flex 0.3s $ease-in-out-quart;
   will-change: flex;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 4rem;
 
   .section__inner {
-    padding-top: 6vw;
-    width: 85%;
-    max-width: 64rem;
     margin: 0 auto;
-  }
-
-  &::-webkit-scrollbar {
-    background-color: -color(royal);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    border: 4px solid -color(royal);
-    background-color: -color(biscay);
-    transition: all 0.2s linear;
+    height: 100%;
+    width: 100%;
   }
 }
 
