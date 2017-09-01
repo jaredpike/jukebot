@@ -1,13 +1,13 @@
 $default-font-color: -color(white);
 
 %heading {
-  font-family: $overpass;
+  font-family: $primary-font;
   font-weight: -weight(regular);
   line-height: 1.3;
 }
 
 %copy {
-  font-family: $overpass;
+  font-family: $primary-font;
   font-weight: -weight(regular);
   line-height: 1.6;
 }
