@@ -88,11 +88,11 @@
     }
 
     &::-webkit-progress-value {
-      background: -color(royal);
+      background: linear-gradient(to right, #CE10B2 0%, #DAB53E 100%);
     }
 
     &::-moz-progress-bar {
-      background: -color(royal);
+      background: linear-gradient(to right, #CE10B2 0%, #DAB53E 100%);
     }
   }
 
