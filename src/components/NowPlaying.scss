@@ -39,7 +39,7 @@
   &:before {
     @extend %overlay;
 
-    background-image: linear-gradient(to bottom right, #CE10B2 0%, #DAB53E 100%);
+    background-image: linear-gradient(to top right, #0AD5C8 0%, #0265DA 100%);
     opacity: 0.65;
     z-index: -z(background);
     transition: opacity 0.2s $ease-in-out-quart;
