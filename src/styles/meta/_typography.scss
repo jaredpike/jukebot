@@ -17,6 +17,7 @@ $default-font-color: -color(white);
 
   color: $color;
   font-size: 3rem;
+  letter-spacing: -0.03em;
 
   @include above(mobile) {
     font-size: 4.4rem;
