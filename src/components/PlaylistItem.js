@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import XIcon from './vectors/XIcon';
-import SmallPlayIcon from './vectors/SmallPlayIcon';
 
 class PlaylistItem extends Component {
     render() {
@@ -9,10 +8,7 @@ class PlaylistItem extends Component {
         return (
             <li className="playlist__item">
                 <div className="playlist__order">{count}</div>
-                <h3 className="playlist__title">{details.title}</h3>
-                <button className="playlist__icon" onClick={() => this.props.playSong(details, index)}>
-                    <SmallPlayIcon />
-                </button>
+                <h3 className="playlist__title" onClick={() => this.props.playSong(details, index)}>{details.title}</h3>
                 <button className="playlist__icon" onClick={() => this.props.removeFromPlaylist(index)}>
                     <XIcon />
                 </button>
