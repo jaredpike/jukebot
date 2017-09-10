@@ -5,6 +5,7 @@ import SongPicker from './SongPicker';
 import Inventory from './Inventory';
 import youtube from 'youtube-search';
 import update from 'immutability-helper';
+import Mousetrap from 'mousetrap';
 
 class App extends Component {
     constructor() {
@@ -176,10 +177,22 @@ class App extends Component {
 
     componentDidMount() {
         window.addEventListener("beforeunload", this.onUnload);
+
+        Mousetrap.bind('space', this.togglePlayPause);
+        Mousetrap.bind('shift+right', this.playNextSong);
+        Mousetrap.bind('shift+left', this.resetProgress);
+        Mousetrap.bind('l', this.toggleLoop);
+        Mousetrap.bind('s', this.toggleShuffle);
     }
 
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.onUnload);
+
+        Mousetrap.unbind('space', this.togglePlayPause);
+        Mousetrap.unbind('shift+right', this.playNextSong);
+        Mousetrap.unbind('shift+left', this.resetProgress);
+        Mousetrap.unbind('l', this.toggleLoop);
+        Mousetrap.unbind('s', this.toggleShuffle);
     }
 
     componentWillUpdate(prevProps, prevState) {
