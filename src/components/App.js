@@ -58,9 +58,9 @@ class App extends Component {
     }
 
     removeFromPlaylist(key) {
-        this.setState({
-            playlist: update(this.state.playlist, {$splice: [[key, 1]]})
-        })
+        this.setState((prevState) => ({
+            playlist: update(prevState.playlist, {$splice: [[key, 1]]})
+        }))
     }
 
     onEnd() {
