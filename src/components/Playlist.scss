@@ -69,20 +69,21 @@
   &-enter {
     transition: all 0.5s $ease-in-out-quart;
     transform: translateX(-120%);
+    opacity: 0;
 
     &.playlist-enter-active {
       transform: translateX(0);
+      opacity: 1;
     }
   }
 
   &-leave {
-    transition: all 0.5s;
+    transition: all 0.3s;
     transform: translateX(0);
-    //max-height: 40rem;
 
     &.playlist-leave-active {
       transform: translateX(120%);
-      //max-height: 0;
+      opacity: 0;
     }
   }
 }

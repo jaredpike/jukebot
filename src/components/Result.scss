@@ -19,8 +19,11 @@
 
   &__list {
     width: 100%;
+    overflow: hidden;
   }
 }
+
+$results: 4;
 
 .result {
   @extend %song-picker-width;
@@ -87,5 +90,31 @@
   &__channel,
   &__length {
     transition: all 0.5s $ease-out-quint;
+  }
+
+  &-enter {
+    transition: all 0.15s $ease-in-out-quart;
+    transform: translateY(3rem);
+    opacity: 0;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        transition-delay: 0.05s + $i / 20;
+      }
+    }
+
+    &.result-enter-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &-leave {
+    transition: all 0.5s;
+    transform: translateX(0);
+
+    &.result-leave-active {
+      transform: translateX(120%);
+    }
   }
 }

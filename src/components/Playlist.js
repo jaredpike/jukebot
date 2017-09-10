@@ -14,7 +14,7 @@ class Playlist extends Component {
                         component="ul"
                         transitionName="playlist"
                         transitionEnterTimeout={0}
-                        transitionLeaveTimeout={500}
+                        transitionLeaveTimeout={300}
                     >
                         {
                         Object
