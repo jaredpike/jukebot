@@ -178,7 +178,7 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.bind('space', this.togglePlayPause);
+        Mousetrap.bind('p', this.togglePlayPause);
         Mousetrap.bind('shift+right', this.playNextSong);
         Mousetrap.bind('shift+left', this.resetProgress);
         Mousetrap.bind('l', this.toggleLoop);
@@ -188,7 +188,7 @@ class App extends Component {
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.unbind('space', this.togglePlayPause);
+        Mousetrap.unbind('p', this.togglePlayPause);
         Mousetrap.unbind('shift+right', this.playNextSong);
         Mousetrap.unbind('shift+left', this.resetProgress);
         Mousetrap.unbind('l', this.toggleLoop);
