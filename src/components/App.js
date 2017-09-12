@@ -24,6 +24,7 @@ class App extends Component {
         this.playSong = this.playSong.bind(this);
         this.resetProgress = this.resetProgress.bind(this);
         this.onEnd = this.onEnd.bind(this);
+        this.clearPlaylist = this.clearPlaylist.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -68,6 +69,11 @@ class App extends Component {
         this.setState((prevState) => ({
             results: update(prevState.results, {$splice: [[key, 1]]})
         }))
+    }
+
+    clearPlaylist() {
+        console.log('clearing playlist');
+        this.setState({playlist: []});
     }
 
     onEnd() {
@@ -243,6 +249,7 @@ class App extends Component {
                                loop={this.state.loop}
                                toggleLoop={this.toggleLoop}
                                onEnd={this.onEnd}
+                               clearPlaylist={this.clearPlaylist}
                     />
                 </div>
             </div>

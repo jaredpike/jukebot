@@ -8,7 +8,10 @@ class Playlist extends Component {
         return (
             <div className="playlist">
                 <div className="playlist__inner">
-                    <span className="playlist__up-next">Up Next</span>
+                    <div className="playlist__header">
+                        <span className="playlist__up-next">Up Next</span>
+                        <button className="playlist__clear" onClick={() => this.props.clearPlaylist()}>Clear Playlist</button>
+                    </div>
                     <CSSTransitionGroup
                         className="playlist__list"
                         component="ul"
