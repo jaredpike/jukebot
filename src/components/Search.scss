@@ -7,13 +7,21 @@
 
   &__icon {
     position: absolute;
-    width: 2.4rem;
-    height: 2.4rem;
-    top: 2rem;
-    left: 2.3rem;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.8rem;
+    top: 1.2rem;
+    right: 2.3rem;
+    cursor: pointer;
 
     svg {
       fill: -color(biscay);
+    }
+
+    &:hover {
+      svg {
+        fill: -color(royal);
+      }
     }
   }
 
@@ -24,7 +32,8 @@
 
       width: 100%;
       height: 6.4rem;
-      padding-left: 6.4rem;
+      padding-right: 6.4rem;
+      padding-left: 3.2rem;
       line-height: 1.4;
       background-color: -color(white);
       border-radius: 3.2rem;

@@ -38,9 +38,9 @@ class Search extends Component {
         return (
             <form className="search" onSubmit={this.handleSubmit}>
                 <div className="search__input">
-                    <div className="search__icon">
+                    <button className="search__icon" onClick={() => this.handleSubmit}>
                         <SearchIcon />
-                    </div>
+                    </button>
                         
                     <input type="text" placeholder="Search YouTube" value={this.state.value} onChange={this.handleChange} onFocus={this.onFocus}/>
                 </div>
