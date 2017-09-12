@@ -15,6 +15,7 @@ class App extends Component {
         this.search = this.search.bind(this);
         this.playNextSong = this.playNextSong.bind(this);
         this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
+        this.removeFromResults = this.removeFromResults.bind(this);
         this.togglePlayPause = this.togglePlayPause.bind(this);
         this.toggleShuffle = this.toggleShuffle.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
@@ -58,9 +59,15 @@ class App extends Component {
     }
 
     removeFromPlaylist(key) {
-        this.setState({
-            playlist: update(this.state.playlist, {$splice: [[key, 1]]})
-        })
+        this.setState((prevState) => ({
+            playlist: update(prevState.playlist, {$splice: [[key, 1]]})
+        }));
+    }
+
+    removeFromResults(key) {
+        this.setState((prevState) => ({
+            results: update(prevState.results, {$splice: [[key, 1]]})
+        }))
     }
 
     onEnd() {
@@ -97,7 +104,7 @@ class App extends Component {
         }
 
         // play next song
-        this.playSong(nextSong, 0);
+        this.playSong(nextSong, nextSongIndex);
     }
 
     playSong(song, key) {
@@ -178,7 +185,7 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.bind('space', this.togglePlayPause);
+        Mousetrap.bind('p', this.togglePlayPause);
         Mousetrap.bind('shift+right', this.playNextSong);
         Mousetrap.bind('shift+left', this.resetProgress);
         Mousetrap.bind('l', this.toggleLoop);
@@ -188,7 +195,7 @@ class App extends Component {
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.unbind('space', this.togglePlayPause);
+        Mousetrap.unbind('p', this.togglePlayPause);
         Mousetrap.unbind('shift+right', this.playNextSong);
         Mousetrap.unbind('shift+left', this.resetProgress);
         Mousetrap.unbind('l', this.toggleLoop);
@@ -210,6 +217,7 @@ class App extends Component {
                 <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
                     <SongPicker results={this.state.results}
                                 addToPlaylist={this.addToPlaylist}
+                                removeFromResults={this.removeFromResults}
                                 search={this.search}
                                 playerRef={player => this.player = this}
                     />

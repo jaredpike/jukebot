@@ -64,4 +64,23 @@
     background-color: -color(biscay);
     border: 4px solid -color(firefly);
   }
+
+  // react animations
+  &-enter {
+    transition: all 0.5s $ease-in-out-quart;
+    transform: translateX(-120%);
+
+    &.playlist-enter-active {
+      transform: translateX(0);
+    }
+  }
+
+  &-leave {
+    transition: all 0.3s;
+    transform: translateX(0);
+
+    &.playlist-leave-active {
+      transform: translateX(120%);
+    }
+  }
 }
