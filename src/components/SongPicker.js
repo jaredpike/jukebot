@@ -16,7 +16,7 @@ class SongPicker extends Component {
                             component="ul"
                             transitionName="result"
                             transitionEnterTimeout={0}
-                            transitionLeaveTimeout={500}
+                            transitionLeaveTimeout={150}
                         >
                             {
                                 Object
