@@ -72,7 +72,6 @@ class App extends Component {
     }
 
     clearPlaylist() {
-        console.log('clearing playlist');
         this.setState({playlist: []});
     }
 
