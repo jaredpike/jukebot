@@ -74,6 +74,29 @@
     }
   }
 
+  &__inner {
+    height: 100%;
+    position: relative;
+  }
+
+  &__empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__empty-message {
+    @include hd-b();
+
+    opacity: 0.5;
+  }
+
   &::-webkit-scrollbar {
     background-color: -color(firefly);
   }
