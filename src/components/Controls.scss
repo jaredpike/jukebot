@@ -22,8 +22,7 @@
     color: -color(white);
     position: relative;
 
-    &:hover:not(:disabled),
-    &:focus {
+    &:hover:not(:disabled) {
       opacity: 1;
     }
 
@@ -36,8 +35,6 @@
     }
 
     &.is-active {
-      opacity: 1;
-
       &:after {
         content: "";
         position: absolute;
