@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './Search.scss';
 import SearchIcon from './vectors/SearchIcon';
+import suggest from 'suggestion';
 
 class Search extends Component {
     constructor() {
         super();
 
-        this.state = {value: ''};
+        this.state = {
+            value: '',
+            suggestions: ''
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,7 +19,10 @@ class Search extends Component {
     }
 
     resetInput() {
-        this.setState({value: ''});
+        this.setState({
+            value: '',
+            suggestions: ''
+        });
     }
 
     onFocus() {
@@ -24,6 +31,17 @@ class Search extends Component {
 
     handleChange(event) {
         this.setState({value: event.target.value});
+        const self = this;
+
+        if (event.target.value.length) {
+            suggest(event.target.value, { client: 'youtube' }, function (err, suggestions) {
+                if (err) throw err;
+                self.setState({suggestions: suggestions});
+            });
+            return;
+        }
+
+        this.setState({suggestions: ''});
     }
 
     handleSubmit(event) {
@@ -43,6 +61,14 @@ class Search extends Component {
                     </button>
                         
                     <input type="text" placeholder="Search YouTube" value={this.state.value} onChange={this.handleChange} onFocus={this.onFocus}/>
+
+                    <ul className="suggestions">
+                        {
+                            Object
+                                .keys(this.state.suggestions)
+                                .map(key => <li>{ this.state.suggestions[key]}</li>)
+                        }
+                    </ul>
                 </div>
             </form>
 

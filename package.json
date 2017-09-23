@@ -42,6 +42,7 @@
     "react-player": "^0.20.0",
     "react-router": "^4.1.2",
     "style-loader": "0.18.2",
+    "suggestion": "^2.1.2",
     "sw-precache-webpack-plugin": "0.11.3",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
