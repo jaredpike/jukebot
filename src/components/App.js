@@ -25,6 +25,7 @@ class App extends Component {
         this.resetProgress = this.resetProgress.bind(this);
         this.onEnd = this.onEnd.bind(this);
         this.clearPlaylist = this.clearPlaylist.bind(this);
+        this.archiveSong = this.archiveSong.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -49,6 +50,7 @@ class App extends Component {
         // if playlist is empty and no songs are playing
         if (playlist.length === 0 && !this.state.currentSong) {
             this.setState({currentSong: song});
+            this.archiveSong(song);
             this.togglePlayPause();
             return;
         }
@@ -121,8 +123,17 @@ class App extends Component {
             played: 0
         });
 
+        this.archiveSong(song);
+
         // remove from playlist
         this.removeFromPlaylist(key);
+    }
+
+    archiveSong(song) {
+        // push into played songs array
+        const playedSongs = [...this.state.playedSongs];
+        playedSongs.push(song);
+        this.setState({playedSongs});
     }
 
     togglePlayPause() {
@@ -202,6 +213,16 @@ class App extends Component {
         Mousetrap.bind('s', this.toggleShuffle);
     }
 
+    componentWillMount() {
+        const localStorageRef = localStorage.getItem('jukebot-played-songs');
+
+        if (localStorageRef) {
+            this.setState({
+                playedSongs: JSON.parse(localStorageRef)
+            })
+        }
+    }
+
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.onUnload);
 
@@ -212,12 +233,14 @@ class App extends Component {
         Mousetrap.unbind('s', this.toggleShuffle);
     }
 
-    componentWillUpdate(prevProps, prevState) {
+    componentWillUpdate(nextProps, nextState) {
         if (this.state.currentSong) {
             document.title = `${(!this.state.isPlaying) ? 'Paused - ' : ''}${this.state.currentSong.title}`;
         } else {
             document.title = 'Jukebot';
         }
+
+        localStorage.setItem('jukebot-played-songs', JSON.stringify(nextState.playedSongs));
     }
 
     render() {
