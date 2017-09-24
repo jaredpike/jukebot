@@ -32,9 +32,12 @@
     @include copy-c();
 
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-    display: flex;
-    padding: 0.5rem 0;
-    align-items: flex-start;
+
+    &-inner {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+    }
 
     &:hover {
       .playlist__icon {
@@ -120,9 +123,11 @@
   &-leave {
     transition: all 0.3s;
     transform: translateX(0);
+    max-height: 16rem;
 
     &.playlist-leave-active {
       transform: translateX(120%);
+      max-height: 0;
     }
   }
 }
