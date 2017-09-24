@@ -8,7 +8,7 @@ class SongPicker extends Component {
         return (
             <div className="section--left">
                 <div className="section__inner">
-                    <Search search={this.props.search}/>
+                    <Search search={this.props.search} isSearching={this.props.isSearching}/>
 
                     <div className="results" id="results">
                         <CSSTransitionGroup

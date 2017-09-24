@@ -1,9 +1,47 @@
 @import '../styles/meta';
 
+@keyframes searching {
+  0% {
+    background-position:0% 50%
+  }
+
+  50% {
+    background-position:100% 50%
+  }
+
+  100% {
+    background-position:0% 50%
+  }
+}
+
 .search {
   @extend %song-picker-width;
 
   position: relative;
+
+  &.is-searching {
+    &:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:after {
+    content: "";
+    width: calc(100% + 0.6rem);
+    height: calc(100% + 0.6rem);
+    background: linear-gradient(to right, #CE10B2 0%, #DAB53E 33%, #CE10B2 66%, #DAB53E 100%);
+    background-size: 300% 100%;
+    z-index: -10;
+    position: absolute;
+    top: -0.3rem;
+    left: -0.3rem;
+    border-radius: 3.6rem;
+    animation: searching 2s ease infinite;
+    opacity: 0;
+    transform: scale(0.99, 0.94);
+    transition: all 0.3s linear;
+  }
 
   &__icon {
     position: absolute;

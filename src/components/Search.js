@@ -80,7 +80,7 @@ class Search extends Component {
         };
 
         return (
-            <form className="search" onSubmit={this.handleSubmit}>
+            <form className={"search " + (this.props.isSearching ? 'is-searching' : '')} onSubmit={this.handleSubmit}>
                 <div className="search__input">
                     <button className="search__icon" onClick={() => this.handleSubmit}>
                         <SearchIcon />

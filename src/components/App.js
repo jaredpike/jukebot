@@ -34,6 +34,7 @@ class App extends Component {
             playedSongs: [],
             currentSong: '',
             isPlaying: false,
+            isSearching: false,
             volume: 0.8,
             played: 0,
             shuffle: false,
@@ -145,10 +146,13 @@ class App extends Component {
             videoEmbeddable: true
         };
 
+        this.setState({isSearching: true})
+
         youtube(query, opts, (err, results) => {
             if (err) return console.log(err);
 
             this.setState({results: results});
+            this.setState({isSearching: false});
         });
     }
 
@@ -224,6 +228,7 @@ class App extends Component {
                                 addToPlaylist={this.addToPlaylist}
                                 removeFromResults={this.removeFromResults}
                                 search={this.search}
+                                isSearching={this.state.isSearching}
                                 playerRef={player => this.player = this}
                     />
                     <Inventory results={this.state.results}
