@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Search.scss';
 import SearchIcon from './vectors/SearchIcon';
 import suggest from 'suggestion';
+import Suggestion from './Suggestion';
 
 class Search extends Component {
     constructor() {
@@ -60,16 +61,28 @@ class Search extends Component {
                         <SearchIcon />
                     </button>
                         
-                    <input type="text" placeholder="Search YouTube" value={this.state.value} onChange={this.handleChange} onFocus={this.onFocus}/>
-
-                    <ul className="suggestions">
-                        {
-                            Object
-                                .keys(this.state.suggestions)
-                                .map(key => <li>{ this.state.suggestions[key]}</li>)
-                        }
-                    </ul>
+                    <input type="text"
+                           placeholder="Search YouTube"
+                           value={this.state.value}
+                           onChange={this.handleChange}
+                           onFocus={this.onFocus}
+                           role="combobox"
+                           autoComplete="off"
+                           aria-autocomplete="list"
+                           aria-owns="suggestions"
+                           aria-expanded="false"
+                           aria-controls="suggestions"
+                           aria-haspopup="false"
+                           aria-activedescendant="option-1"
+                    />
                 </div>
+                <ul id="suggestions" className="suggestions" role="listbox">
+                    {
+                        Object
+                            .keys(this.state.suggestions)
+                            .map(key => <Suggestion key={key} index={key} value={this.state.suggestions[key]} search={this.props.search} />)
+                    }
+                </ul>
             </form>
 
         );

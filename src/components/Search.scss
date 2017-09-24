@@ -45,3 +45,32 @@
     }
   }
 }
+
+.suggestions {
+  @extend %big-shadow;
+
+  background-color: -color(white);
+  width: 100%;
+  border-radius: 0.8rem;
+  margin-top: 1.2rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: -z(overlay);
+
+  &:not(:empty) {
+    padding: 1.6rem 0;
+  }
+
+  &__item {
+    @include hd-search();
+
+    padding: 0.4rem 3.2rem;
+
+    &:hover,
+    &:focus {
+      background-color: -color(royal);
+      color: -color(white);
+    }
+  }
+}
