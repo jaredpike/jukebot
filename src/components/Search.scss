@@ -46,9 +46,7 @@
   }
 }
 
-.suggestions {
-  @extend %big-shadow;
-
+.react-autosuggest__suggestions-container {
   background-color: -color(white);
   width: 100%;
   border-radius: 0.8rem;
@@ -57,20 +55,24 @@
   top: 100%;
   left: 0;
   z-index: -z(overlay);
+  transform: translateY(1rem);
+  opacity: 0;
 
-  &:not(:empty) {
+  &--open {
+    transform: translateY(0);
+    opacity: 1;
     padding: 1.6rem 0;
+    transition: opacity 0.3s $ease-out-quint, transform 0.2s $ease-out-quint;
   }
+}
 
-  &__item {
-    @include hd-search();
+.react-autosuggest__suggestion {
+  @include hd-search();
 
-    padding: 0.4rem 3.2rem;
+  padding: 0.4rem 3.2rem;
+}
 
-    &:hover,
-    &:focus {
-      background-color: -color(royal);
-      color: -color(white);
-    }
-  }
+.react-autosuggest__suggestion--highlighted {
+  background-color: -color(royal);
+  color: -color(white);
 }
