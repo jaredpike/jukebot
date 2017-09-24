@@ -146,6 +146,7 @@ class App extends Component {
             videoEmbeddable: true
         };
 
+        this.setState({results: []});
         this.setState({isSearching: true})
 
         youtube(query, opts, (err, results) => {

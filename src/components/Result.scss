@@ -122,11 +122,11 @@
   }
 
   &-leave {
-    transition: all 0.5s;
-    transform: translateX(0);
+    transition: all 0.15s;
+    opacity: 1;
 
     &.result-leave-active {
-      transform: translateX(150%);
+      opacity: 0;
     }
   }
 }
