@@ -6,6 +6,8 @@ import Inventory from './Inventory';
 import youtube from 'youtube-search';
 import update from 'immutability-helper';
 import Mousetrap from 'mousetrap';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 class App extends Component {
     constructor() {
@@ -151,7 +153,7 @@ class App extends Component {
     search(query) {
         // search options: https://developers.google.com/youtube/v3/docs/search/list
         const opts = {
-            maxResults: 50,
+            maxResults: 5,
             key: 'AIzaSyDRJpXF7CJ1uqGYgwRlqXQfmXFFHCYoXxY',
             type: 'video',
             videoEmbeddable: true
@@ -285,4 +287,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);
