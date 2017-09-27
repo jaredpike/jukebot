@@ -28,6 +28,8 @@ class App extends Component {
         this.onEnd = this.onEnd.bind(this);
         this.clearPlaylist = this.clearPlaylist.bind(this);
         this.archiveSong = this.archiveSong.bind(this);
+        this.increaseVolume = this.increaseVolume.bind(this);
+        this.decreaseVolume = this.decreaseVolume.bind(this);
         this.moveItem = this.moveItem.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
@@ -165,10 +167,28 @@ class App extends Component {
         this.setState({loop: !this.state.loop});
     }
 
+    increaseVolume(amount) {
+        const currentVolume = this.state.volume;
+
+        if (currentVolume < 1) {
+            const volume = currentVolume + amount;
+            this.setState({volume: volume});
+        }
+    }
+
+    decreaseVolume(amount) {
+        const currentVolume = this.state.volume;
+
+        if (currentVolume > 0.2) {
+            const volume = currentVolume - amount;
+            this.setState({volume: volume});
+        }
+    }
+
     search(query) {
         // search options: https://developers.google.com/youtube/v3/docs/search/list
         const opts = {
-            maxResults: 5,
+            maxResults: 50,
             key: 'AIzaSyDRJpXF7CJ1uqGYgwRlqXQfmXFFHCYoXxY',
             type: 'video',
             videoEmbeddable: true
@@ -228,6 +248,8 @@ class App extends Component {
         Mousetrap.bind('shift+left', this.resetProgress);
         Mousetrap.bind('l', this.toggleLoop);
         Mousetrap.bind('s', this.toggleShuffle);
+        Mousetrap.bind(']', () => this.increaseVolume(0.1));
+        Mousetrap.bind('[', () => this.decreaseVolume(0.1));
     }
 
     componentWillMount() {
