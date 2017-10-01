@@ -6,6 +6,8 @@ import Inventory from './Inventory';
 import youtube from 'youtube-search';
 import update from 'immutability-helper';
 import Mousetrap from 'mousetrap';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 class App extends Component {
     constructor() {
@@ -28,6 +30,10 @@ class App extends Component {
         this.archiveSong = this.archiveSong.bind(this);
         this.increaseVolume = this.increaseVolume.bind(this);
         this.decreaseVolume = this.decreaseVolume.bind(this);
+        this.moveItem = this.moveItem.bind(this);
+        this.increaseVolume = this.increaseVolume.bind(this);
+        this.decreaseVolume = this.decreaseVolume.bind(this);
+        this.moveItem = this.moveItem.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -129,6 +135,20 @@ class App extends Component {
 
         // remove from playlist
         this.removeFromPlaylist(key);
+    }
+
+    moveItem(dragIndex, hoverIndex) {
+        const { playlist } = this.state;
+        const dragItem = playlist[dragIndex];
+
+        this.setState(update(this.state, {
+            playlist: {
+                $splice: [
+                    [dragIndex, 1],
+                    [hoverIndex, 0, dragItem],
+                ],
+            },
+        }));
     }
 
     archiveSong(song) {
@@ -300,6 +320,7 @@ class App extends Component {
                                toggleLoop={this.toggleLoop}
                                onEnd={this.onEnd}
                                clearPlaylist={this.clearPlaylist}
+                               moveItem={this.moveItem}
                     />
                 </div>
             </div>
@@ -307,4 +328,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);

@@ -24,7 +24,15 @@ class Playlist extends Component {
                         {
                         Object
                         .keys(this.props.playlist)
-                        .map(key => <PlaylistItem key={this.props.playlist[key].id.toString()} index={key} details={this.props.playlist[key]} removeFromPlaylist={this.props.removeFromPlaylist} playSong={this.props.playSong} />)
+                        .map(key =>
+                            <PlaylistItem
+                                key={this.props.playlist[key].id.toString()}
+                                index={key}
+                                details={this.props.playlist[key]}
+                                removeFromPlaylist={this.props.removeFromPlaylist}
+                                playSong={this.props.playSong}
+                                moveItem={this.props.moveItem}
+                            />)
                         }
 
                     </CSSTransitionGroup>
