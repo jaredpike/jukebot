@@ -28,6 +28,7 @@ class App extends Component {
         this.onEnd = this.onEnd.bind(this);
         this.clearPlaylist = this.clearPlaylist.bind(this);
         this.archiveSong = this.archiveSong.bind(this);
+        this.moveItem = this.moveItem.bind(this);
         this.increaseVolume = this.increaseVolume.bind(this);
         this.decreaseVolume = this.decreaseVolume.bind(this);
         this.moveItem = this.moveItem.bind(this);
