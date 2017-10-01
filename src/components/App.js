@@ -28,6 +28,7 @@ class App extends Component {
         this.onEnd = this.onEnd.bind(this);
         this.clearPlaylist = this.clearPlaylist.bind(this);
         this.archiveSong = this.archiveSong.bind(this);
+        this.moveItem = this.moveItem.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
         // set initial state
@@ -129,6 +130,20 @@ class App extends Component {
 
         // remove from playlist
         this.removeFromPlaylist(key);
+    }
+
+    moveItem(dragIndex, hoverIndex) {
+        const { playlist } = this.state;
+        const dragItem = playlist[dragIndex];
+
+        this.setState(update(this.state, {
+            playlist: {
+                $splice: [
+                    [dragIndex, 1],
+                    [hoverIndex, 0, dragItem],
+                ],
+            },
+        }));
     }
 
     archiveSong(song) {
@@ -280,6 +295,7 @@ class App extends Component {
                                toggleLoop={this.toggleLoop}
                                onEnd={this.onEnd}
                                clearPlaylist={this.clearPlaylist}
+                               moveItem={this.moveItem}
                     />
                 </div>
             </div>

@@ -42,6 +42,7 @@ class Inventory extends Component {
                               playSong={this.props.playSong}
                               shuffle={this.props.shuffle}
                               clearPlaylist={this.props.clearPlaylist}
+                              moveItem={this.props.moveItem}
                     />
                 </div>
             </div>
