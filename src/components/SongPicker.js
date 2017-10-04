@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Result from './Result';
 import Search from './Search';
+import RecentlySearched from './RecentlySearched';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 class SongPicker extends Component {
@@ -24,6 +25,10 @@ class SongPicker extends Component {
                                     .map(key => <Result key={this.props.results[key].id.toString()} index={key} details={this.props.results[key]} addToPlaylist={this.props.addToPlaylist} removeFromResults={this.props.removeFromResults} />)
                             }
                         </CSSTransitionGroup>
+                        <RecentlySearched
+                            searchedTerms={this.props.searchedTerms}
+                            search={this.props.search}
+                        />
                     </div>
                 </div>
             </div>

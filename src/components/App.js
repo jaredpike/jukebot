@@ -33,6 +33,7 @@ class App extends Component {
         this.moveItem = this.moveItem.bind(this);
         this.increaseVolume = this.increaseVolume.bind(this);
         this.decreaseVolume = this.decreaseVolume.bind(this);
+        this.archiveSearchTerm = this.archiveSearchTerm.bind(this);
         this.moveItem = this.moveItem.bind(this);
         this.onUnload = this.onUnload.bind(this);
 
@@ -41,6 +42,7 @@ class App extends Component {
             results: [],
             playlist: [],
             playedSongs: [],
+            searchedTerms: [],
             currentSong: '',
             isPlaying: false,
             isSearching: false,
@@ -151,10 +153,24 @@ class App extends Component {
         }));
     }
 
+    archiveSearchTerm(searchTerm) {
+        // push into played songs array
+        const searchedTerms = [...this.state.searchedTerms].slice(0, 9);
+
+        // if search term already exists
+        if (searchedTerms.indexOf(searchTerm) !== -1) {
+            return;
+        }
+
+        searchedTerms.unshift(searchTerm);
+        this.setState({searchedTerms});
+    }
+
     archiveSong(song) {
         // push into played songs array
-        const playedSongs = [...this.state.playedSongs];
-        playedSongs.push(song);
+        const playedSongs = [...this.state.playedSongs].slice(0, 100);
+
+        playedSongs.unshift(song);
         this.setState({playedSongs});
     }
 
@@ -191,14 +207,15 @@ class App extends Component {
     search(query) {
         // search options: https://developers.google.com/youtube/v3/docs/search/list
         const opts = {
-            maxResults: 50,
+            maxResults: 20,
             key: 'AIzaSyDRJpXF7CJ1uqGYgwRlqXQfmXFFHCYoXxY',
             type: 'video',
             videoEmbeddable: true
         };
 
         this.setState({results: []});
-        this.setState({isSearching: true})
+        this.setState({isSearching: true});
+        this.archiveSearchTerm(query);
 
         youtube(query, opts, (err, results) => {
             if (err) return console.log(err);
@@ -256,11 +273,18 @@ class App extends Component {
     }
 
     componentWillMount() {
-        const localStorageRef = localStorage.getItem('jukebot-played-songs');
+        const playedSongsRef = localStorage.getItem('jukebot-played-songs');
+        const searchedTermsRef = localStorage.getItem('jukebot-searched-terms');
 
-        if (localStorageRef) {
+        if (playedSongsRef) {
             this.setState({
-                playedSongs: JSON.parse(localStorageRef)
+                playedSongs: JSON.parse(playedSongsRef)
+            })
+        }
+
+        if (searchedTermsRef) {
+            this.setState({
+                searchedTerms: JSON.parse(searchedTermsRef)
             })
         }
     }
@@ -283,6 +307,7 @@ class App extends Component {
         }
 
         localStorage.setItem('jukebot-played-songs', JSON.stringify(nextState.playedSongs));
+        localStorage.setItem('jukebot-searched-terms', JSON.stringify(nextState.searchedTerms));
     }
 
     render() {
@@ -296,6 +321,7 @@ class App extends Component {
                                 search={this.search}
                                 isSearching={this.state.isSearching}
                                 playerRef={player => this.player = this}
+                                searchedTerms={this.state.searchedTerms}
                     />
                     <Inventory results={this.state.results}
                                playlist={this.state.playlist}
