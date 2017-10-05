@@ -301,7 +301,7 @@ class App extends Component {
 
     componentWillUpdate(nextProps, nextState) {
         if (this.state.currentSong) {
-            document.title = `${(!this.state.isPlaying) ? 'Paused - ' : ''}${this.state.currentSong.title}`;
+            document.title = `${(!this.state.isPlaying) ? 'Paused: ' : ''}${this.state.currentSong.title}`;
         } else {
             document.title = 'Jukebot';
         }
