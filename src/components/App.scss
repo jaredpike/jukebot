@@ -72,7 +72,8 @@
 
 .root {
   background-color: -color(royal);
-  transition: transform 0.4s $ease-in-out-quart;
+  transition: all 0.4s $ease-in-out-quart;
+  backface-visibility: hidden;
 }
 
 .pushed-back {

@@ -10,9 +10,7 @@ class Menu extends Component {
                     <span></span>
                 </button>
                 <div className="menu__wrap">
-                    <div className="menu__inner">
-                        <h3>Bagels</h3>
-                    </div>
+                    <div className="menu__inner"></div>
                 </div>
             </div>
         );
