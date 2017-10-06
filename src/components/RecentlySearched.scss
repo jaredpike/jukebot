@@ -24,9 +24,18 @@
   &__button {
     @include copy-c();
 
-    border: 1px solid -color(white);
-    border-radius: 0.3rem;
-    padding: 0.6rem 1rem;
+    border: 1px solid transparentize(-color(white), 0.7);
+    border-radius: 100em;
+    padding: 0.6rem 1.3rem;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      @extend %big-shadow;
+
+      border-color: -color(white);
+    }
   }
 }
