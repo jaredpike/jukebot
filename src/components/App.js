@@ -3,6 +3,7 @@ import './App.scss';
 import Header from './Header';
 import SongPicker from './SongPicker';
 import Inventory from './Inventory';
+import Menu from './Menu';
 import youtube from 'youtube-search';
 import update from 'immutability-helper';
 import Mousetrap from 'mousetrap';
@@ -21,6 +22,7 @@ class App extends Component {
         this.togglePlayPause = this.togglePlayPause.bind(this);
         this.toggleShuffle = this.toggleShuffle.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
         this.setVolume = this.setVolume.bind(this);
         this.onProgress = this.onProgress.bind(this);
         this.playSong = this.playSong.bind(this);
@@ -49,7 +51,8 @@ class App extends Component {
             volume: 0.8,
             played: 0,
             shuffle: false,
-            loop: false
+            loop: false,
+            menuIsOpen: false
         };
     }
 
@@ -154,7 +157,7 @@ class App extends Component {
     }
 
     archiveSearchTerm(searchTerm) {
-        // push into played songs array
+        // push into searched terms array
         const searchedTerms = [...this.state.searchedTerms].slice(0, 9);
 
         // if search term already exists
@@ -184,6 +187,10 @@ class App extends Component {
 
     toggleLoop() {
         this.setState({loop: !this.state.loop});
+    }
+
+    toggleMenu() {
+        this.setState({menuIsOpen: !this.state.menuIsOpen});
     }
 
     increaseVolume(amount) {
@@ -270,6 +277,7 @@ class App extends Component {
         Mousetrap.bind('s', this.toggleShuffle);
         Mousetrap.bind(']', () => this.increaseVolume(0.1));
         Mousetrap.bind('[', () => this.decreaseVolume(0.1));
+        Mousetrap.bind('esc', () => this.setState({menuIsOpen: false}));
     }
 
     componentWillMount() {
@@ -313,42 +321,49 @@ class App extends Component {
     render() {
         return (
             <div className="fill-height">
-                <Header name="Jukebot"/>
-                <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
-                    <SongPicker results={this.state.results}
-                                addToPlaylist={this.addToPlaylist}
-                                removeFromResults={this.removeFromResults}
-                                search={this.search}
-                                isSearching={this.state.isSearching}
-                                playerRef={player => this.player = this}
-                                searchedTerms={this.state.searchedTerms}
-                    />
-                    <Inventory results={this.state.results}
-                               playlist={this.state.playlist}
-                               playNextSong={this.playNextSong}
-                               currentSong={this.state.currentSong}
-                               removeFromPlaylist={this.removeFromPlaylist}
-                               isPlaying={this.state.isPlaying}
-                               togglePlayPause={this.togglePlayPause}
-                               playSong={this.playSong}
-                               setVolume={this.setVolume}
-                               volume={this.state.volume}
-                               player={player => { this.player = player }}
-                               onProgress={this.onProgress}
-                               onSeekChange={this.onSeekChange}
-                               onSeekMouseUp={this.onSeekMouseUp}
-                               onSeekMouseDown={this.onSeekMouseDown}
-                               played={this.state.played}
-                               resetProgress={this.resetProgress}
-                               shuffle={this.state.shuffle}
-                               toggleShuffle={this.toggleShuffle}
-                               loop={this.state.loop}
-                               toggleLoop={this.toggleLoop}
-                               onEnd={this.onEnd}
-                               clearPlaylist={this.clearPlaylist}
-                               moveItem={this.moveItem}
-                    />
+                <div className={"fill-height root " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
+                    <Header name="Jukebot"/>
+                    <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
+                        <SongPicker results={this.state.results}
+                                    addToPlaylist={this.addToPlaylist}
+                                    removeFromResults={this.removeFromResults}
+                                    search={this.search}
+                                    isSearching={this.state.isSearching}
+                                    playerRef={player => this.player = this}
+                                    searchedTerms={this.state.searchedTerms}
+                        />
+                        <Inventory results={this.state.results}
+                                   playlist={this.state.playlist}
+                                   playNextSong={this.playNextSong}
+                                   currentSong={this.state.currentSong}
+                                   removeFromPlaylist={this.removeFromPlaylist}
+                                   isPlaying={this.state.isPlaying}
+                                   togglePlayPause={this.togglePlayPause}
+                                   playSong={this.playSong}
+                                   setVolume={this.setVolume}
+                                   volume={this.state.volume}
+                                   player={player => { this.player = player }}
+                                   onProgress={this.onProgress}
+                                   onSeekChange={this.onSeekChange}
+                                   onSeekMouseUp={this.onSeekMouseUp}
+                                   onSeekMouseDown={this.onSeekMouseDown}
+                                   played={this.state.played}
+                                   resetProgress={this.resetProgress}
+                                   shuffle={this.state.shuffle}
+                                   toggleShuffle={this.toggleShuffle}
+                                   loop={this.state.loop}
+                                   toggleLoop={this.toggleLoop}
+                                   onEnd={this.onEnd}
+                                   clearPlaylist={this.clearPlaylist}
+                                   moveItem={this.moveItem}
+                        />
+                    </div>
                 </div>
+
+                <Menu
+                    menuIsOpen={this.state.menuIsOpen}
+                    toggleMenu={this.toggleMenu}
+                />
             </div>
         );
     }
