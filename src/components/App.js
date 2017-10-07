@@ -230,6 +230,8 @@ class App extends Component {
             this.setState({results: results});
             this.setState({isSearching: false});
         });
+        const results = document.querySelector('#results');
+        results.scrollTop = 0;
     }
 
     resetProgress() {
