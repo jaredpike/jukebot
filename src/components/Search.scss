@@ -41,6 +41,7 @@
     opacity: 0;
     transform: scale(0.99, 0.94);
     transition: all 0.3s linear;
+    z-index: -z(content, -1);
   }
 
   &__icon {
@@ -64,6 +65,9 @@
   }
 
   &__input {
+    position: relative;
+    z-index: -z(content);
+
     input {
       @extend %strip-input-style;
       @include hd-search();
