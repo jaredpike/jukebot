@@ -17,7 +17,7 @@ class Menu extends Component {
                                 <ul className="shortcuts__list">
                                     <li className="shortcuts__item">
                                         <div className="shortcuts__action">Play/Pause</div>
-                                        <div className="shortcuts__key">P</div>
+                                        <div className="shortcuts__key">space</div>
                                     </li>
                                     <li className="shortcuts__item">
                                         <div className="shortcuts__action">Shuffle</div>

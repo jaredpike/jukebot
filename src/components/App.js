@@ -249,6 +249,8 @@ class App extends Component {
     onSeekMouseUp = e => {
         this.setState({ seeking: false });
         this.player.seekTo(parseFloat(e.target.value));
+
+        e.target.blur();
     }
 
     onProgress = state => {
@@ -272,7 +274,7 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.bind('p', this.togglePlayPause);
+        Mousetrap.bind('space', this.togglePlayPause);
         Mousetrap.bind('shift+right', this.playNextSong);
         Mousetrap.bind('shift+left', this.resetProgress);
         Mousetrap.bind('l', this.toggleLoop);
@@ -302,11 +304,14 @@ class App extends Component {
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.onUnload);
 
-        Mousetrap.unbind('p', this.togglePlayPause);
+        Mousetrap.unbind('space', this.togglePlayPause);
         Mousetrap.unbind('shift+right', this.playNextSong);
         Mousetrap.unbind('shift+left', this.resetProgress);
         Mousetrap.unbind('l', this.toggleLoop);
         Mousetrap.unbind('s', this.toggleShuffle);
+        Mousetrap.unbind(']', () => this.increaseVolume(0.1));
+        Mousetrap.unbind('[', () => this.decreaseVolume(0.1));
+        Mousetrap.unbind('esc', () => this.setState({menuIsOpen: false}));
     }
 
     componentWillUpdate(nextProps, nextState) {
