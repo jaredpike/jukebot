@@ -31,6 +31,10 @@
     flex: 1;
     opacity: 0;
     transition: all 0.4s $ease-in-out-quart 0.2s;
+
+    & + & {
+      margin-left: 6rem;
+    }
   }
 
   &__wrap {
@@ -52,6 +56,7 @@
 
     height: 100%;
     overflow-y: scroll;
+    display: flex;
   }
 
   &__burger {
@@ -102,7 +107,7 @@
     @include hd-b();
 
     font-weight: -weight(bold);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   &__item {
@@ -138,5 +143,20 @@
     line-height: 1;
     box-shadow: 0 0.3rem 0 -color(white);
     margin-left: 1rem;
+  }
+}
+
+.more {
+  &__title {
+    @include hd-b();
+
+    font-weight: -weight(bold);
+    margin-bottom: 3rem;
+  }
+
+  &__content {
+    p {
+      @include copy-b();
+    }
   }
 }

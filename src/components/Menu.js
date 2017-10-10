@@ -62,6 +62,16 @@ class Menu extends Component {
                             </div>
                         </div>
 
+                        {/*
+                        <div className="menu__section">
+                            <div className="more">
+                                <h2 className="more__title">Suggestions?</h2>
+                                <div className="more__content">
+                                    <p>If you have feature suggestions, please tweet at me.</p>
+                                </div>
+                            </div>
+                        </div>
+                        */}
                     </div>
                 </div>
             </div>
