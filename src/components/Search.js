@@ -71,7 +71,7 @@ class Search extends Component {
         const { value, suggestions } = this.state;
 
         const inputProps = {
-            placeholder: 'Search YouTube',
+            placeholder: 'Search for music',
             value,
             onChange: this.onChange
         };
