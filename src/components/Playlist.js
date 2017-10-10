@@ -38,7 +38,7 @@ class Playlist extends Component {
                     </CSSTransitionGroup>
                     {this.props.playlist.length < 1 &&
                     <div className="playlist__empty">
-                        <p className="playlist__empty-message">Add songs to start a playlist.</p>
+                        <p className="playlist__empty-message">Select more songs to start a playlist.</p>
                     </div>
                     }
                 </div>

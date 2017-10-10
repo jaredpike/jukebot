@@ -49,6 +49,9 @@
     @extend %container;
 
     @include vertical-padding(8rem);
+
+    height: 100%;
+    overflow-y: scroll;
   }
 
   &__burger {
@@ -98,6 +101,7 @@
   &__title {
     @include hd-b();
 
+    font-weight: -weight(bold);
     margin-bottom: 4rem;
   }
 
