@@ -19,5 +19,16 @@
     font-size: 2.4rem;
     font-weight: -weight(bold);
     letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      fill: -color(white);
+      width: 3.6rem;
+      height: 3.6rem;
+      margin-right: 1rem;
+      margin-top: 0.2rem;
+    }
   }
 }
