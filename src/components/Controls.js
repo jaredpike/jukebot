@@ -8,6 +8,41 @@ import PlayIcon from './vectors/PlayIcon';
 import ShuffleIcon from './vectors/ShuffleIcon';
 
 class Controls extends Component {
+    constructor() {
+        super();
+
+        this.handlePlayPause = this.handlePlayPause.bind(this);
+        this.handleLoop = this.handleLoop.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handleShuffle = this.handleShuffle.bind(this);
+    }
+
+    handlePlayPause() {
+        this.props.togglePlayPause();
+        this.playButton.blur();
+    }
+
+    handleLoop() {
+        this.props.toggleLoop();
+        this.loopButton.blur();
+    }
+
+    handlePrev() {
+        this.props.resetProgress();
+        this.prevButton.blur();
+    }
+
+    handleNext() {
+        this.props.playNextSong();
+        this.nextButton.blur();
+    }
+
+    handleShuffle() {
+        this.props.toggleShuffle();
+        this.shuffleButton.blur();
+    }
+
     render() {
         return (
             <div className="controls">
@@ -19,18 +54,32 @@ class Controls extends Component {
                         onChange={this.props.onSeekChange}
                         onMouseUp={this.props.onSeekMouseUp}
                         className="controls__seek"
+                        id="controls-seeker"
                     />
-                    <progress className="controls__progress" max={1} value={this.props.played} />
 
-                    <button className={"controls__button " + (this.props.shuffle ? 'is-active' : '')} onClick={this.props.toggleShuffle}>
+                    <progress className="controls__progress"
+                              max={1}
+                              value={this.props.played} />
+
+                    <button
+                        className={"controls__button " + (this.props.shuffle ? 'is-active' : '')}
+                        onClick={this.handleShuffle}
+                        ref={(shuffleButton) => { this.shuffleButton = shuffleButton }}
+                    >
                         <ShuffleIcon />
                     </button>
 
-                    <button className="controls__button" onClick={this.props.resetProgress}>
+                    <button
+                        className="controls__button"
+                        onClick={this.handlePrev}
+                        ref={(prevButton) => { this.prevButton = prevButton }}>
                         <PrevIcon />
                     </button>
 
-                    <button onClick={this.props.togglePlayPause} className="controls__button">
+                    <button
+                        onClick={this.handlePlayPause}
+                        className="controls__button"
+                        ref={(playButton) => { this.playButton = playButton }}>
                         {this.props.isPlaying ? (
                             <PauseIcon />
                         ) : (
@@ -38,11 +87,20 @@ class Controls extends Component {
                         )}
                     </button>
 
-                    <button onClick={this.props.playNextSong} className="controls__button" disabled={this.props.playlist ? false : true}>
+                    <button
+                        onClick={this.handleNext}
+                        className="controls__button"
+                        disabled={this.props.playlist ? false : true}
+                        ref={(nextButton) => { this.nextButton = nextButton }}
+                    >
                         <NextIcon />
                     </button>
 
-                    <button className={"controls__button " + (this.props.loop ? 'is-active' : '')} onClick={this.props.toggleLoop}>
+                    <button
+                        className={"controls__button " + (this.props.loop ? 'is-active' : '')}
+                        onClick={this.handleLoop}
+                        ref={(loopButton) => { this.loopButton = loopButton }}
+                    >
                         <LoopIcon />
                     </button>
 

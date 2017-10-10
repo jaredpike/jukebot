@@ -69,3 +69,13 @@
     }
   }
 }
+
+.root {
+  background-color: -color(royal);
+  transition: all 0.4s $ease-in-out-quart;
+  backface-visibility: hidden;
+}
+
+.pushed-back {
+  transform: scale(0.95);
+}

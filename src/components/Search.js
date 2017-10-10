@@ -65,16 +65,13 @@ class Search extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.search(this.state.value);
-
-        const results = document.querySelector('#results');
-        results.scrollTop = 0;
     }
 
     render() {
         const { value, suggestions } = this.state;
 
         const inputProps = {
-            placeholder: 'Search YouTube',
+            placeholder: 'Search for music',
             value,
             onChange: this.onChange
         };

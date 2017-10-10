@@ -7,9 +7,6 @@ const Header = (props) => {
             <div className="header__section">
                 <a className="header__logo">{props.name}</a>
             </div>
-            <div className="header__section">
-                <button className="header__burger"><span></span></button>
-            </div>
         </header>
     )
 };

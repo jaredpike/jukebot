@@ -103,3 +103,8 @@
         }
     }
 }
+
+@mixin vertical-padding($top, $bottom: $top) {
+    padding-top: $top;
+    padding-bottom: $bottom;
+}

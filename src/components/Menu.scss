@@ -1,0 +1,138 @@
+@import '../styles/meta';
+
+.menu {
+  &.is-open {
+    .menu__wrap {
+      transform: translateY(0);
+    }
+
+    .menu__burger {
+      span {
+        background-color: transparent;
+
+        &:before {
+          transform: translateY(0) rotate(45deg);
+          top: 0;
+        }
+
+        &:after {
+          transform: translateY(0) rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+
+    .menu__section {
+      opacity: 1;
+    }
+  }
+
+  &__section {
+    flex: 1;
+    opacity: 0;
+    transition: all 0.4s $ease-in-out-quart 0.2s;
+  }
+
+  &__wrap {
+    background-color: -color(biscay);
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: all 0.5s $ease-in-out-quart;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -z(menu);
+  }
+
+  &__inner {
+    @extend %container;
+
+    @include vertical-padding(8rem);
+  }
+
+  &__burger {
+    align-items: center;
+    cursor: pointer;
+    width: 3.6rem;
+    height: 3.6rem;
+    position: absolute;
+    top: 1.6rem;
+    right: 2.4rem;
+    z-index: -z(modal);
+
+    span:nth-child(1) {
+      display: block;
+      width: 3rem;
+      min-width: 0;
+      height: 3px;
+      position: relative;
+      margin: auto;
+      transition: background-color 0.1s linear;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 3rem;
+        height: 3px;
+        position: absolute;
+        left: 0;
+        background: -color(white);
+        will-change: transform, opacity;
+        transition: all 0.5s $ease-in-out-quart;
+      }
+
+      &:before {
+        transform: translateY(-0.4rem);
+      }
+
+      &:after {
+        transform: translateY(0.4rem);
+        transition-delay: 0.09s;
+      }
+    }
+  }
+}
+
+.shortcuts {
+  &__title {
+    @include hd-b();
+
+    margin-bottom: 4rem;
+  }
+
+  &__item {
+    @include copy-b();
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & + & {
+      padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid transparentize(-color(white), 0.9);
+    }
+  }
+
+  &__action,
+  &__key {
+    flex: 1;
+  }
+
+  &__action {
+    flex: 1;
+  }
+
+  &__key {
+    flex-grow: 0;
+    text-align: right;
+    border: 1px solid transparentize(-color(white), 0.4);
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.3rem;
+    line-height: 1;
+    box-shadow: 0 0.3rem 0 -color(white);
+    margin-left: 1rem;
+  }
+}

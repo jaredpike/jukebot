@@ -10,8 +10,6 @@ class RecentlySearched extends Component {
 
     handleClick(searchTerm) {
         this.props.search(searchTerm);
-        const results = document.querySelector('#results');
-        results.scrollTop = 0;
     }
 
     render() {
