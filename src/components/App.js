@@ -9,6 +9,8 @@ import update from 'immutability-helper';
 import Mousetrap from 'mousetrap';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
+import mobile from 'is-mobile';
+import SadRobot from './vectors/SadRobot';
 
 class App extends Component {
     constructor() {
@@ -326,53 +328,66 @@ class App extends Component {
     }
 
     render() {
-        return (
-            <div className="fill-height">
-                <div className={"fill-height root " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
-                    <Header name="Jukebot"/>
-                    <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
-                        <SongPicker results={this.state.results}
-                                    addToPlaylist={this.addToPlaylist}
-                                    removeFromResults={this.removeFromResults}
-                                    search={this.search}
-                                    isSearching={this.state.isSearching}
-                                    playerRef={player => this.player = this}
-                                    searchedTerms={this.state.searchedTerms}
-                        />
-                        <Inventory results={this.state.results}
-                                   playlist={this.state.playlist}
-                                   playNextSong={this.playNextSong}
-                                   currentSong={this.state.currentSong}
-                                   removeFromPlaylist={this.removeFromPlaylist}
-                                   isPlaying={this.state.isPlaying}
-                                   togglePlayPause={this.togglePlayPause}
-                                   playSong={this.playSong}
-                                   setVolume={this.setVolume}
-                                   volume={this.state.volume}
-                                   player={player => { this.player = player }}
-                                   onProgress={this.onProgress}
-                                   onSeekChange={this.onSeekChange}
-                                   onSeekMouseUp={this.onSeekMouseUp}
-                                   onSeekMouseDown={this.onSeekMouseDown}
-                                   played={this.state.played}
-                                   resetProgress={this.resetProgress}
-                                   shuffle={this.state.shuffle}
-                                   toggleShuffle={this.toggleShuffle}
-                                   loop={this.state.loop}
-                                   toggleLoop={this.toggleLoop}
-                                   onEnd={this.onEnd}
-                                   clearPlaylist={this.clearPlaylist}
-                                   moveItem={this.moveItem}
-                        />
+        const isMobile = mobile();
+
+        if (isMobile) {
+            return (
+                <div className="mobile-warning">
+                    <div className="mobile-warning__inner">
+                        <SadRobot />
+                        <h1 className="mobile-warning__heading">Due to browser restrictions, mobile browsers are not supported right now.</h1>
                     </div>
                 </div>
+            )
+        } else {
+            return (
+                <div className={"fill-height " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
+                    <div className={"fill-height root " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
+                        <Header name="Jukebot"/>
+                        <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
+                            <SongPicker results={this.state.results}
+                                        addToPlaylist={this.addToPlaylist}
+                                        removeFromResults={this.removeFromResults}
+                                        search={this.search}
+                                        isSearching={this.state.isSearching}
+                                        playerRef={player => this.player = this}
+                                        searchedTerms={this.state.searchedTerms}
+                            />
+                            <Inventory results={this.state.results}
+                                       playlist={this.state.playlist}
+                                       playNextSong={this.playNextSong}
+                                       currentSong={this.state.currentSong}
+                                       removeFromPlaylist={this.removeFromPlaylist}
+                                       isPlaying={this.state.isPlaying}
+                                       togglePlayPause={this.togglePlayPause}
+                                       playSong={this.playSong}
+                                       setVolume={this.setVolume}
+                                       volume={this.state.volume}
+                                       player={player => { this.player = player }}
+                                       onProgress={this.onProgress}
+                                       onSeekChange={this.onSeekChange}
+                                       onSeekMouseUp={this.onSeekMouseUp}
+                                       onSeekMouseDown={this.onSeekMouseDown}
+                                       played={this.state.played}
+                                       resetProgress={this.resetProgress}
+                                       shuffle={this.state.shuffle}
+                                       toggleShuffle={this.toggleShuffle}
+                                       loop={this.state.loop}
+                                       toggleLoop={this.toggleLoop}
+                                       onEnd={this.onEnd}
+                                       clearPlaylist={this.clearPlaylist}
+                                       moveItem={this.moveItem}
+                            />
+                        </div>
+                    </div>
 
-                <Menu
-                    menuIsOpen={this.state.menuIsOpen}
-                    toggleMenu={this.toggleMenu}
-                />
-            </div>
-        );
+                    <Menu
+                        menuIsOpen={this.state.menuIsOpen}
+                        toggleMenu={this.toggleMenu}
+                    />
+                </div>
+            );
+        }
     }
 }
 

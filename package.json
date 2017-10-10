@@ -28,6 +28,7 @@
     "gh-pages": "^1.0.0",
     "html-webpack-plugin": "2.29.0",
     "immutability-helper": "^2.3.1",
+    "is-mobile": "^0.2.2",
     "jest": "20.0.4",
     "lodash.flow": "^3.5.0",
     "mousetrap": "^1.6.1",
