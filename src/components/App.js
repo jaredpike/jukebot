@@ -335,7 +335,7 @@ class App extends Component {
                 <div className="mobile-warning">
                     <div className="mobile-warning__inner">
                         <SadRobot />
-                        <h1 className="mobile-warning__heading">Due to browser restrictions, mobile browsers are not supported right now.</h1>
+                        <h1 className="mobile-warning__heading">I am sorry human, but I can't play music on mobile browsers.</h1>
                     </div>
                 </div>
             )
