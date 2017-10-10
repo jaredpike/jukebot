@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import './Menu.scss';
 
 class Menu extends Component {
+    constructor() {
+        super();
+
+        this.onBurgerClick = this.onBurgerClick.bind(this);
+    }
+
+    onBurgerClick() {
+        this.props.toggleMenu();
+        this.burgerButton.blur();
+    }
+
     render() {
         return (
             <div className={"menu " + (this.props.menuIsOpen ? 'is-open' : '')}>
-                <button className="menu__burger" onClick={this.props.toggleMenu}>
+                <button className="menu__burger"
+                        onClick={this.onBurgerClick}
+                        ref={(burgerButton) => { this.burgerButton = burgerButton }}>
                     <span></span>
                     <span></span>
                 </button>
