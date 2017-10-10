@@ -341,7 +341,7 @@ class App extends Component {
             )
         } else {
             return (
-                <div className={"fill-height " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
+                <div className="fill-height">
                     <div className={"fill-height root " + (this.state.menuIsOpen ? 'pushed-back' : '')}>
                         <Header name="Jukebot"/>
                         <div className={"main " + (this.state.currentSong || this.state.playlist.length ? 'has-songs' : '')}>
