@@ -279,8 +279,8 @@ class App extends Component {
         Mousetrap.bind('shift+left', this.resetProgress);
         Mousetrap.bind('l', this.toggleLoop);
         Mousetrap.bind('s', this.toggleShuffle);
-        Mousetrap.bind(']', () => this.increaseVolume(0.1));
-        Mousetrap.bind('[', () => this.decreaseVolume(0.1));
+        Mousetrap.bind('=', () => this.increaseVolume(0.1));
+        Mousetrap.bind('-', () => this.decreaseVolume(0.1));
         Mousetrap.bind('esc', () => this.setState({menuIsOpen: false}));
     }
 
@@ -309,8 +309,8 @@ class App extends Component {
         Mousetrap.unbind('shift+left', this.resetProgress);
         Mousetrap.unbind('l', this.toggleLoop);
         Mousetrap.unbind('s', this.toggleShuffle);
-        Mousetrap.unbind(']', () => this.increaseVolume(0.1));
-        Mousetrap.unbind('[', () => this.decreaseVolume(0.1));
+        Mousetrap.unbind('=', () => this.increaseVolume(0.1));
+        Mousetrap.unbind('-', () => this.decreaseVolume(0.1));
         Mousetrap.unbind('esc', () => this.setState({menuIsOpen: false}));
     }
 

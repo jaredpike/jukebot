@@ -42,11 +42,11 @@ class Menu extends Component {
                                     </li>
                                     <li className="shortcuts__item">
                                         <div className="shortcuts__action">Volume Up</div>
-                                        <div className="shortcuts__key">]</div>
+                                        <div className="shortcuts__key">+</div>
                                     </li>
                                     <li className="shortcuts__item">
                                         <div className="shortcuts__action">Volume Down</div>
-                                        <div className="shortcuts__key">[</div>
+                                        <div className="shortcuts__key">-</div>
                                     </li>
                                     <li className="shortcuts__item">
                                         <div className="shortcuts__action">Play Next Song</div>
